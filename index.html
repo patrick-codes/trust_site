@@ -1452,6 +1452,81 @@
     </div>
 
 
+    <script>
+        // Page navigation functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Show the dashboard page by default
+            showPage('dashboard');
+
+            // Add click event listeners to all page links
+            const pageLinks = document.querySelectorAll('.page-link');
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+
+                    // Update active state in navigation
+                    pageLinks.forEach(link => link.classList.remove('text-blue-600'));
+                    this.classList.add('text-blue-600');
+                });
+            });
+
+            // Function to show a specific page and hide others
+            function showPage(pageId) {
+                // Hide all pages
+                const pages = document.querySelectorAll('.page');
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+
+                // Show the requested page
+                const activePage = document.getElementById(pageId);
+                if (activePage) {
+                    activePage.classList.add('active');
+                }
+
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+
+            // Button interactivity
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Add a temporary animation effect
+                    this.classList.add('transform', 'scale-95');
+                    setTimeout(() => {
+                        this.classList.remove('transform', 'scale-95');
+                    }, 100);
+
+                    // Simulate navigation (in a real app, this would go to different pages)
+                    if (this.textContent.includes('Apply Now')) {
+                        showPage('loans');
+                    } else if (this.textContent.includes('Manage Cards')) {
+                        showPage('cards');
+                    } else if (this.textContent.includes('Send Money')) {
+                        alert('Redirecting to Transfer page...');
+                    } else if (this.textContent.includes('Start Chat')) {
+                        alert('Opening live chat window...');
+                    }
+                });
+            });
+
+            // Make the entire quick action cards clickable
+            const actionCards = document.querySelectorAll('.bg-white.rounded-xl');
+            actionCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const button = this.querySelector('button');
+                    if (button) {
+                        button.click();
+                    }
+                });
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>
