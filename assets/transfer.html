@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Money - INNOVEST PACIFIC TRUST</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6eef7 100%);
+            min-height: 100vh;
+        }
+
+        .card-gradient {
+            background: linear-gradient(135deg, #4a6fa5 0%, #2c3e50 100%);
+        }
+
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .transfer-step {
+            display: none;
+        }
+
+        .transfer-step.active {
+            display: block;
+        }
+
+        .account-item {
+            transition: all 0.3s ease;
+        }
+
+        .account-item:hover {
+            background-color: #f3f4f6;
+            transform: translateY(-2px);
+        }
+
+        .success-checkmark {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        .success-checkmark .check-icon {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            border-radius: 50%;
+            box-sizing: content-box;
+            border: 4px solid #4CAF50;
+        }
+
+        .success-checkmark .check-icon::before {
+            top: 3px;
+            left: -2px;
+            transform: rotate(45deg);
+            transform-origin: 100% 50%;
+        }
+
+        .success-checkmark .check-icon::after {
+            top: 0;
+            left: 30px;
+            transform: rotate(-45deg);
+            transform-origin: 0 50%;
+        }
+
+        .success-checkmark .check-icon::before,
+        .success-checkmark .check-icon::after {
+            content: '';
+            height: 4px;
+            background-color: #4CAF50;
+            display: block;
+            border-radius: 2px;
+            position: absolute;
+        }
+
+        .success-checkmark .check-icon::before {
+            width: 40px;
+            animation: icon-line-tip 0.75s;
+        }
+
+        .success-checkmark .check-icon::after {
+            width: 80px;
+            animation: icon-line-long 0.75s;
+        }
+
+        @keyframes icon-line-tip {
+            0% {
+                width: 0;
+                left: 1px;
+                top: 19px;
+            }
+
+            54% {
+                width: 0;
+                left: 1px;
+                top: 19px;
+            }
+
+            70% {
+                width: 50px;
+                left: -8px;
+                top: 37px;
+            }
+
+            84% {
+                width: 17px;
+                left: 21px;
+                top: 48px;
+            }
+
+            100% {
+                width: 40px;
+                left: 5px;
+                top: 40px;
+            }
+        }
+
+        @keyframes icon-line-long {
+            0% {
+                width: 0;
+                right: 46px;
+                top: 54px;
+            }
+
+            65% {
+                width: 0;
+                right: 46px;
+                top: 54px;
+            }
+
+            84% {
+                width: 55px;
+                right: 0px;
+                top: 35px;
+            }
+
+            100% {
+                width: 80px;
+                right: 5px;
+                top: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="bg-blue-700 p-2 rounded-lg mr-3">
+                    <i class="fas fa-landmark text-2xl"></i>
+                </div>
+                <h1 class="text-xl font-bold">INNOVEST PACIFIC TRUST</h1>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="px-3 py-2 rounded-lg"><i class="fas fa-home mr-2"></i>Dashboard</a>
+                    <a href="#" class="px-3 py-2 rounded-lg bg-blue-800"><i
+                            class="fas fa-exchange-alt mr-2"></i>Transfer</a>
+                    <a href="#" class="px-3 py-2 rounded-lg"><i class="fas fa-credit-card mr-2"></i>Cards</a>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="ml-2">James Michael</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6 flex items-center">
+            <a href="#" class="text-blue-600 mr-2"><i class="fas fa-arrow-left"></i></a>
+            <h2 class="text-2xl font-bold text-gray-800">Transfer Money</h2>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex-1 flex flex-col items-center">
+                    <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center mb-2">1
+                    </div>
+                    <span class="text-sm font-medium">Details</span>
+                </div>
+                <div class="h-1 bg-gray-300 flex-1 mx-2"></div>
+                <div class="flex-1 flex flex-col items-center">
+                    <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mb-2">2
+                    </div>
+                    <span class="text-sm font-medium text-gray-500">Review</span>
+                </div>
+                <div class="h-1 bg-gray-300 flex-1 mx-2"></div>
+                <div class="flex-1 flex flex-col items-center">
+                    <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mb-2">3
+                    </div>
+                    <span class="text-sm font-medium text-gray-500">Confirm</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Transfer Details -->
+            <div id="step1" class="transfer-step active">
+                <h3 class="text-lg font-semibold mb-4">Transfer Details</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">From Account</label>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="font-medium">Primary Savings</p>
+                                    <p class="text-sm text-gray-500">•••• 7360 | $27,149,461.14</p>
+                                </div>
+                                <i class="fas fa-chevron-down text-gray-500"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">To Account</label>
+                        <div class="border border-gray-300 p-4 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="font-medium">Select recipient</p>
+                                </div>
+                                <i class="fas fa-chevron-down text-gray-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Recent Recipients</label>
+                    <div class="space-y-3">
+                        <div class="account-item border border-gray-300 p-4 rounded-lg cursor-pointer">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Robert Johnson</p>
+                                    <p class="text-sm text-gray-500">Chase •••• 2281</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="account-item border border-gray-300 p-4 rounded-lg cursor-pointer">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Sarah Williams</p>
+                                    <p class="text-sm text-gray-500">Bank of America •••• 4492</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="account-item border border-gray-300 p-4 rounded-lg cursor-pointer">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-building text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Michael & Associates</p>
+                                    <p class="text-sm text-gray-500">Wells Fargo •••• 7765</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="text-gray-500">$</span>
+                            </div>
+                            <input type="text" class="pl-8 w-full px-4 py-3 border border-gray-300 rounded-lg"
+                                placeholder="0.00">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Transfer Date</label>
+                        <div class="flex space-x-2">
+                            <button class="px-4 py-3 bg-blue-600 text-white rounded-lg font-medium">Now</button>
+                            <button
+                                class="px-4 py-3 bg-white border border-gray-300 rounded-lg font-medium">Later</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Description (Optional)</label>
+                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                        placeholder="e.g. Loan repayment">
+                </div>
+
+                <div class="flex justify-end">
+                    <button id="nextToStep2"
+                        class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold btn-hover">
+                        Continue <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Review Transfer -->
+            <div id="step2" class="transfer-step">
+                <h3 class="text-lg font-semibold mb-4">Review Transfer</h3>
+
+                <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-gray-600">From</span>
+                        <span class="text-gray-600">To</span>
+                    </div>
+
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <p class="font-medium">Primary Savings</p>
+                            <p class="text-sm text-gray-500">•••• 7360</p>
+                        </div>
+
+                        <div class="text-3xl text-gray-400">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+
+                        <div class="text-right">
+                            <p class="font-medium">Robert Johnson</p>
+                            <p class="text-sm text-gray-500">Chase •••• 2281</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4 space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Amount</span>
+                            <span class="font-medium">$5,000.00</span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Transfer Date</span>
+                            <span class="font-medium">Now</span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Description</span>
+                            <span class="font-medium">Loan repayment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Security Code</label>
+                    <p class="text-sm text-gray-500 mb-2">Enter the security code sent to your mobile device</p>
+                    <div class="flex space-x-2">
+                        <input type="text" class="w-12 h-12 text-center border border-gray-300 rounded-lg"
+                            maxlength="1">
+                        <input type="text" class="w-12 h-12 text-center border border-gray-300 rounded-lg"
+                            maxlength="1">
+                        <input type="text" class="w-12 h-12 text-center border border-gray-300 rounded-lg"
+                            maxlength="1">
+                        <input type="text" class="w-12 h-12 text-center border border-gray-300 rounded-lg"
+                            maxlength="1">
+                        <input type="text" class="w-12 h-12 text-center border border-gray-300 rounded-lg"
+                            maxlength="1">
+                        <input type="text" class="w-12 h-12 text-center border border-gray-300 rounded-lg"
+                            maxlength="1">
+                    </div>
+                    <div class="mt-2 text-sm text-blue-600 cursor-pointer">
+                        <i class="fas fa-redo-alt mr-1"></i> Resend code
+                    </div>
+                </div>
+
+                <div class="flex justify-between">
+                    <button id="backToStep1"
+                        class="bg-white text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-semibold btn-hover">
+                        <i class="fas fa-arrow-left mr-2"></i> Back
+                    </button>
+                    <button id="nextToStep3"
+                        class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold btn-hover">
+                        Confirm Transfer <i class="fas fa-check ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div id="step3" class="transfer-step">
+                <div class="text-center py-8">
+                    <div class="success-checkmark mb-6">
+                        <div class="check-icon"></div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Transfer Successful!</h3>
+                    <p class="text-gray-600 mb-6">Your transfer has been processed successfully</p>
+
+                    <div class="bg-gray-50 p-6 rounded-lg mb-6 max-w-md mx-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600">From</span>
+                            <span class="text-gray-600">To</span>
+                        </div>
+
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <p class="font-medium">Primary Savings</p>
+                                <p class="text-sm text-gray-500">•••• 7360</p>
+                            </div>
+
+                            <div class="text-3xl text-gray-400">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+
+                            <div class="text-right">
+                                <p class="font-medium">Robert Johnson</p>
+                                <p class="text-sm text-gray-500">Chase •••• 2281</p>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-4 space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Amount</span>
+                                <span class="font-medium">$5,000.00</span>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Transfer Date</span>
+                                <span class="font-medium">Aug 20, 2023</span>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Reference Number</span>
+                                <span class="font-medium">TX98372819</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center space-x-4">
+                        <button
+                            class="bg-white text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-semibold btn-hover">
+                            <i class="fas fa-download mr-2"></i> Download Receipt
+                        </button>
+                        <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold btn-hover">
+                            <i class="fas fa-home mr-2"></i> Back to Dashboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Quick Transfer</h3>
+            <p class="text-gray-600 mb-4">Send money to your frequently used contacts</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-user text-blue-600 text-xl"></i>
+                    </div>
+                    <p class="text-sm font-medium">Robert Johnson</p>
+                </div>
+
+                <div class="text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-user text-green-600 text-xl"></i>
+                    </div>
+                    <p class="text-sm font-medium">Sarah Williams</p>
+                </div>
+
+                <div class="text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-building text-purple-600 text-xl"></i>
+                    </div>
+                    <p class="text-sm font-medium">Michael & Associates</p>
+                </div>
+
+                <div class="text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-plus text-yellow-600 text-xl"></i>
+                    </div>
+                    <p class="text-sm font-medium">Add New</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Step navigation
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+
+            const nextToStep2 = document.getElementById('nextToStep2');
+            const backToStep1 = document.getElementById('backToStep1');
+            const nextToStep3 = document.getElementById('nextToStep3');
+
+            // Update progress indicators
+            function updateProgress(step) {
+                const indicators = document.querySelectorAll('.flex-1.flex-col.items-center');
+                const lines = document.querySelectorAll('.h-1');
+
+                indicators.forEach((indicator, index) => {
+                    const number = indicator.querySelector('div');
+                    if (index < step) {
+                        number.classList.remove('bg-gray-300', 'text-gray-600');
+                        number.classList.add('bg-blue-600', 'text-white');
+                        indicator.querySelector('span').classList.remove('text-gray-500');
+                        indicator.querySelector('span').classList.add('text-gray-800');
+                    } else {
+                        number.classList.remove('bg-blue-600', 'text-white');
+                        number.classList.add('bg-gray-300', 'text-gray-600');
+                        indicator.querySelector('span').classList.remove('text-gray-800');
+                        indicator.querySelector('span').classList.add('text-gray-500');
+                    }
+                });
+
+                lines.forEach((line, index) => {
+                    if (index < step - 1) {
+                        line.classList.remove('bg-gray-300');
+                        line.classList.add('bg-blue-600');
+                    } else {
+                        line.classList.remove('bg-blue-600');
+                        line.classList.add('bg-gray-300');
+                    }
+                });
+            }
+
+            // Navigate to step 2
+            nextToStep2.addEventListener('click', function () {
+                step1.classList.remove('active');
+                step2.classList.add('active');
+                updateProgress(2);
+            });
+
+            // Navigate back to step 1
+            backToStep1.addEventListener('click', function () {
+                step2.classList.remove('active');
+                step1.classList.add('active');
+                updateProgress(1);
+            });
+
+            // Navigate to step 3
+            nextToStep3.addEventListener('click', function () {
+                step2.classList.remove('active');
+                step3.classList.add('active');
+                updateProgress(3);
+
+                // Auto-fill security code for demo purposes
+                const inputs = document.querySelectorAll('input[type="text"]');
+                inputs.forEach((input, index) => {
+                    input.value = index + 1;
+                });
+            });
+
+            // Account selection
+            const accountItems = document.querySelectorAll('.account-item');
+            accountItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    accountItems.forEach(acc => acc.classList.remove('border-blue-500', 'bg-blue-50'));
+                    this.classList.add('border-blue-500', 'bg-blue-50');
+                });
+            });
+
+            // Security code input auto-tab
+            const securityInputs = document.querySelectorAll('input[type="text"][maxlength="1"]');
+            securityInputs.forEach((input, index) => {
+                input.addEventListener('input', function () {
+                    if (this.value.length === 1 && index < securityInputs.length - 1) {
+                        securityInputs[index + 1].focus();
+                    }
+                });
+
+                input.addEventListener('keydown', function (e) {
+                    if (e.key === 'Backspace' && this.value === '' && index > 0) {
+                        securityInputs[index - 1].focus();
+                    }
+                });
+            });
+
+            // Amount input formatting
+            const amountInput = document.querySelector('input[placeholder="0.00"]');
+            amountInput.addEventListener('blur', function () {
+                const value = parseFloat(this.value);
+                if (!isNaN(value)) {
+                    this.value = value.toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+                }
+            });
+
+            // Quick transfer actions
+            const quickTransferItems = document.querySelectorAll('.text-center.cursor-pointer');
+            quickTransferItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    // For demo purposes, just show an alert
+                    const name = this.querySelector('p').textContent;
+                    if (name !== 'Add New') {
+                        alert(`Quick transfer to ${name} would be initiated.`);
+                    } else {
+                        alert('Add new recipient screen would open.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
