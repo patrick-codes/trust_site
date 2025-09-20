@@ -165,19 +165,16 @@
             </div>
 
 
+
             <div class="flex items-center space-x-4">
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="#" class="px-3 py-2 rounded-lg"><i class="fas fa-home mr-2"></i>Dashboard</a>
-                    <a href="#" class="px-3 py-2 rounded-lg bg-blue-800"><i
-                            class="fas fa-exchange-alt mr-2"></i>Transfer</a>
-                    <a href="#" class="px-3 py-2 rounded-lg"><i class="fas fa-credit-card mr-2"></i>Cards</a>
+                    <a href="#" data-page="dashboard" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                            class="fas fa-home mr-2"></i>Dashboard</a>
+
+                    <a href="./support.html" data-page="support" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                            class="fas fa-headset mr-2"></i>Support</a>
                 </div>
-                <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <span class="ml-2">James Michael Maddox</span>
-                </div>
+
             </div>
         </div>
     </header>
@@ -194,24 +191,92 @@
                 <div class="flex-1 flex flex-col items-center">
                     <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center mb-2">1
                     </div>
-                    <span class="text-sm font-medium">Details</span>
+                    <span class="text-sm font-medium">Beneficiary</span>
                 </div>
                 <div class="h-1 bg-gray-300 flex-1 mx-2"></div>
                 <div class="flex-1 flex flex-col items-center">
                     <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mb-2">2
                     </div>
+                    <span class="text-sm font-medium text-gray-500">Details</span>
+                </div>
+
+                <div class="h-1 bg-gray-300 flex-1 mx-2"></div>
+                <div class="flex-1 flex flex-col items-center">
+                    <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mb-2">3
+                    </div>
                     <span class="text-sm font-medium text-gray-500">Review</span>
                 </div>
                 <div class="h-1 bg-gray-300 flex-1 mx-2"></div>
                 <div class="flex-1 flex flex-col items-center">
-                    <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mb-2">3
+                    <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mb-2">4
                     </div>
                     <span class="text-sm font-medium text-gray-500">Confirm</span>
                 </div>
             </div>
 
+            <!-- Step 0: Add/Select Beneficiary -->
+            <div id="step0" class="transfer-step active">
+                <h3 class="text-lg font-semibold mb-4">Add or Select Beneficiary</h3>
+
+                <!-- Add Beneficiary Form -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Beneficiary Name</label>
+                        <input type="text" id="beneficiaryName"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg" placeholder="Enter name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Account Number</label>
+                        <input type="text" id="beneficiaryAccount"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                            placeholder="Enter account number">
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Bank</label>
+                    <input type="text" id="beneficiaryBank" class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                        placeholder="Enter bank name">
+                </div>
+
+                <div class="flex justify-end mb-8">
+                    <button id="nextToStep1"
+                        class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold btn-hover">
+                        Continue to Transfer <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Saved Beneficiaries Section -->
+                <h4 class="text-md font-semibold mb-4">Saved Beneficiaries</h4>
+                <div id="beneficiaryList" class="space-y-4">
+                    <!-- Example Saved Beneficiary -->
+                    <div
+                        class="p-4 border rounded-lg flex justify-between items-center hover:bg-blue-50 cursor-pointer">
+                        <div>
+                            <p class="font-medium">Williams</p>
+                            <p class="text-sm text-gray-500">Account: 1234567890</p>
+                            <p class="text-sm text-gray-500">Bank: First Bank</p>
+                        </div>
+                        <button class="transferBtn bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold">
+                            Transfer
+                        </button>
+                    </div>
+                    <div
+                        class="p-4 border rounded-lg flex justify-between items-center hover:bg-blue-50 cursor-pointer">
+                        <div>
+                            <p class="font-medium">Sandra</p>
+                            <p class="text-sm text-gray-500">Account: 9876543210</p>
+                            <p class="text-sm text-gray-500">Bank: GTBank</p>
+                        </div>
+                        <button class="transferBtn bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold">
+                            Transfer
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Step 1: Transfer Details -->
-            <div id="step1" class="transfer-step active">
+            <div id="step1" class="transfer-step">
                 <h3 class="text-lg font-semibold mb-4">Transfer Details</h3>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -299,6 +364,16 @@
                     <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg"
                         placeholder="e.g. Loan repayment">
                 </div>
+
+                <div class="flex justify-between">
+                    <button id="backToStep0"
+                        class="bg-white text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-semibold btn-hover">
+                        <i class="fas fa-arrow-left mr-2"></i> Back
+                    </button>
+
+
+                </div>
+
 
                 <div class="flex justify-end">
                     <div class="flex items-center space-x-2">
@@ -481,10 +556,9 @@
                     Once completed, kindly reach out to our support team at:
                 </p>
 
-                <a href="mailto:support@Innovestpacifictrust.com"
-                    class="text-blue-600 underline">support@trustsphere.com</a>
+                <a href="mailto:strustsphere544@gmail.com" class="text-blue-600 underline">trustsphere544@gmail.com</a>
                 <br>
-                <a href="mailto:info@Innovestpacifictrust.com" class="text-blue-600 underline">info@trustsphere.com</a>
+                <a href="mailto:info@trustsphere.com" class="text-blue-600 underline">info@trustsphere.com</a>
                 </p>
                 <button id="closeModal" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">
                     Close
@@ -541,9 +615,44 @@
         </footer>
 
     </main>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+
+
+            // Spinner + Modal logic
+            const nextToStep2Btn = document.getElementById("nextToStep2");
+            const loadingSpinner = document.getElementById("loadingSpinner");
+            const frozenModal = document.getElementById("frozenModal");
+            const closeModal = document.getElementById("closeModal");
+
+            if (nextToStep2Btn) {
+                nextToStep2Btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+
+                    // Show spinner
+                    loadingSpinner.classList.remove("hidden");
+
+                    // Disable the button while loading
+                    nextToStep2Btn.disabled = true;
+
+                    // Wait 3 seconds → hide spinner → show modal
+                    setTimeout(() => {
+                        loadingSpinner.classList.add("hidden");
+                        frozenModal.classList.remove("hidden");
+                        nextToStep2Btn.disabled = false;
+                    }, 3000);
+                });
+            }
+
+            if (closeModal) {
+                closeModal.addEventListener("click", () => {
+                    frozenModal.classList.add("hidden");
+                    // 👇 Do NOT change steps here, just close modal
+                });
+            }
+
+
+
 
             const nowBtn = document.getElementById("nowBtn");
             const laterBtn = document.getElementById("laterBtn");
@@ -553,72 +662,160 @@
             const dropdownBtn = document.getElementById("recipientDropdownBtn");
             const dropdown = document.getElementById("recipientDropdown");
             const selectedRecipient = document.getElementById("selectedRecipient");
-            const items = document.querySelectorAll(".recipient-item");
 
             // Step navigation
+            const step0 = document.getElementById('step0');
             const step1 = document.getElementById('step1');
             const step2 = document.getElementById('step2');
-            const step3 = document.getElementById('step3');
 
             const nextToStep2 = document.getElementById('nextToStep2');
             const backToStep1 = document.getElementById('backToStep1');
-            const nextToStep3 = document.getElementById('nextToStep3');
+            const nextToStep1 = document.getElementById('nextToStep1');
 
-            // Spinner + modal
-            const frozenModal = document.getElementById('frozenModal');
-            const closeModal = document.getElementById('closeModal');
-            const loadingSpinner = document.getElementById("loadingSpinner");
+            // Input fields
+            const beneficiaryName = document.getElementById('beneficiaryName');
+            const beneficiaryAccount = document.getElementById('beneficiaryAccount');
+            const beneficiaryBank = document.getElementById('beneficiaryBank');
+            const beneficiaryList = document.getElementById("beneficiaryList");
 
-            // Function to reset styles
-            function resetButtons() {
-                nowBtn.classList.remove("bg-blue-600", "text-white");
-                nowBtn.classList.add("bg-white", "border", "border-gray-300", "text-gray-800");
+            // API base
+            const API_BASE = "http://localhost:5000/api";
 
-                laterBtn.classList.remove("bg-blue-600", "text-white");
-                laterBtn.classList.add("bg-white", "border", "border-gray-300", "text-gray-800");
+            // Helper: clear any selected card visuals
+            function clearSelectedCards() {
+                const cards = beneficiaryList.querySelectorAll('.beneficiary-card');
+                cards.forEach(c => {
+                    c.classList.remove('border-blue-500', 'bg-blue-50', 'selected');
+                });
             }
 
-            // "Now" button click
-            nowBtn.addEventListener("click", () => {
-                resetButtons();
-                nowBtn.classList.add("bg-blue-600", "text-white");
-                nowBtn.classList.remove("bg-white", "border", "border-gray-300");
-                datePickerContainer.classList.add("hidden");
-                datePickerInput.value = ""; // clear date if switching back to Now
-            });
+            // Load saved beneficiaries and render them
+            async function loadBeneficiaries() {
+                try {
+                    const res = await fetch(`${API_BASE}/`);
+                    if (!res.ok) {
+                        console.error("Failed to load beneficiaries:", res.status);
+                        beneficiaryList.innerHTML = '<p class="text-sm text-gray-500">Unable to load beneficiaries.</p>';
+                        return;
+                    }
+                    const beneficiaries = await res.json();
+                    beneficiaryList.innerHTML = "";
 
-            // "Later" button click
-            laterBtn.addEventListener("click", () => {
-                resetButtons();
-                laterBtn.classList.add("bg-blue-600", "text-white");
-                laterBtn.classList.remove("bg-white", "border", "border-gray-300");
-                datePickerContainer.classList.remove("hidden");
-            });
+                    if (!Array.isArray(beneficiaries) || beneficiaries.length === 0) {
+                        beneficiaryList.innerHTML = '<p class="text-sm text-gray-500">No saved beneficiaries yet.</p>';
+                        return;
+                    }
 
-            // Toggle dropdown
-            dropdownBtn.addEventListener("click", () => {
-                dropdown.classList.toggle("hidden");
-            });
+                    beneficiaries.forEach(b => {
+                        const div = document.createElement("div");
+                        // mark with class to select later
+                        div.className = "beneficiary-card p-4 border rounded-lg flex justify-between items-center hover:bg-blue-50 cursor-pointer";
 
-            // Select recipient
-            items.forEach(item => {
-                item.addEventListener("click", () => {
-                    const value = item.getAttribute("data-value");
-                    selectedRecipient.textContent = value;
-                    selectedRecipient.classList.remove("text-gray-600");
-                    selectedRecipient.classList.add("text-gray-800", "font-semibold");
-                    dropdown.classList.add("hidden");
+                        div.innerHTML = `
+                    <div class="beneficiary-info">
+                        <p class="font-medium">${escapeHtml(b.name)}</p>
+                        <p class="text-sm text-gray-500">Account: ${escapeHtml(b.accountNumber)}</p>
+                        <p class="text-sm text-gray-500">Bank: ${escapeHtml(b.bank)}</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button class="transferBtn bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold">
+                            Transfer
+                        </button>
+                    </div>
+                `;
+
+                        // clicking the card (not the transfer button) will "view" details (visual highlight)
+                        div.addEventListener('click', (e) => {
+                            if (e.target.closest('.transferBtn')) return; // don't handle clicks on the transfer button here
+                            clearSelectedCards();
+                            div.classList.add('border-blue-500', 'bg-blue-50', 'selected');
+                            // optionally you could show more details elsewhere; visually it's highlighted now
+                        });
+
+                        // Transfer click: prefill and go to Step 1
+                        div.querySelector(".transferBtn").addEventListener("click", (e) => {
+                            e.stopPropagation(); // avoid triggering card click again
+                            // Prefill the "To Account" display in Step 1 and navigate
+                            selectedRecipient.textContent = `${b.name} - ${b.bank} •••• ${String(b.accountNumber).slice(-4)}`;
+                            selectedRecipient.classList.remove("text-gray-600");
+                            selectedRecipient.classList.add("text-gray-800", "font-semibold");
+
+                            step0.classList.remove("active");
+                            step1.classList.add("active");
+                            updateProgress(2);
+                        });
+
+                        beneficiaryList.appendChild(div);
+                    });
+                } catch (err) {
+                    console.error("Error loading beneficiaries:", err);
+                    beneficiaryList.innerHTML = '<p class="text-sm text-red-500">Error loading beneficiaries.</p>';
+                }
+            }
+
+            // escape helper to avoid injecting HTML
+            function escapeHtml(str) {
+                if (typeof str !== 'string') return str;
+                return str.replace(/[&<>"']/g, function (m) {
+                    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m];
                 });
-            });
+            }
 
-            // Close dropdown when clicking outside
-            document.addEventListener("click", (e) => {
-                if (!dropdownBtn.contains(e.target) && !dropdown.contains(e.target)) {
-                    dropdown.classList.add("hidden");
+            // Initial load
+            loadBeneficiaries();
+
+            // Add new beneficiary (but DO NOT auto-navigate). The user wants to see it in the list first,
+            // then click the added beneficiary's Transfer to proceed.
+            nextToStep1.addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                const name = beneficiaryName.value.trim();
+                const account = beneficiaryAccount.value.trim();
+                const bank = beneficiaryBank.value.trim();
+
+                if (!name || !account || !bank) {
+                    alert("Please fill all beneficiary details before continuing.");
+                    return;
+                }
+
+                try {
+                    const res = await fetch(`${API_BASE}/`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ name, accountNumber: account, bank })
+                    });
+
+                    if (!res.ok) {
+                        console.error("Failed to add beneficiary:", res.status);
+                        alert("Unable to add beneficiary. Try again.");
+                        return;
+                    }
+
+                    // refresh the list so the newly added beneficiary appears immediately
+                    await loadBeneficiaries();
+
+                    // Clear the add form fields so the user sees it was added
+                    beneficiaryName.value = "";
+                    beneficiaryAccount.value = "";
+                    beneficiaryBank.value = "";
+
+                    // Do NOT navigate to step1 here — user asked to click the added beneficiary to proceed
+                    // Optionally highlight the newly added one (if backend returns it, we would need its id).
+                    // We'll just show a small visual cue by briefly flashing a message (simple inline)
+                    const flash = document.createElement('div');
+                    flash.textContent = "Beneficiary added. Click it below to Transfer.";
+                    flash.className = "text-sm text-green-600 mb-3";
+                    // insert at top of beneficiaryList container
+                    beneficiaryList.parentNode.insertBefore(flash, beneficiaryList);
+                    setTimeout(() => flash.remove(), 3000);
+
+                } catch (err) {
+                    console.error("Error adding beneficiary:", err);
+                    alert("Something went wrong while adding beneficiary.");
                 }
             });
 
-            // Update progress indicators
+            // Keep your existing progress function (unchanged)
             function updateProgress(step) {
                 const indicators = document.querySelectorAll('.flex-1.flex-col.items-center');
                 const lines = document.querySelectorAll('.h-1');
@@ -649,87 +846,44 @@
                 });
             }
 
-            // 🚫 Freeze at Step 1 with spinner then modal
-            nextToStep2.addEventListener('click', function (e) {
-                e.preventDefault();
 
-                // Stay on Step 1
-                step1.classList.add('active');
-                step2.classList.remove('active');
-                step3.classList.remove('active');
-                updateProgress(1);
-
-                // Show spinner
-                loadingSpinner.classList.remove("hidden");
-                nextToStep2.disabled = true;
-
-                // After 3s hide spinner and show modal
-                setTimeout(() => {
-                    loadingSpinner.classList.add("hidden");
-                    frozenModal.classList.remove('hidden');
-                    nextToStep2.disabled = false;
-                }, 3000);
-            });
-
-            // Close modal
-            closeModal.addEventListener('click', function () {
-                frozenModal.classList.add('hidden');
-            });
-
-            // Account selection highlight
-            const accountItems = document.querySelectorAll('.account-item');
-            accountItems.forEach(item => {
-                item.addEventListener('click', function () {
-                    accountItems.forEach(acc => acc.classList.remove('border-blue-500', 'bg-blue-50'));
-                    this.classList.add('border-blue-500', 'bg-blue-50');
-                });
-            });
-
-            // Security code input auto-tab
-            const securityInputs = document.querySelectorAll('input[type="text"][maxlength="1"]');
-            securityInputs.forEach((input, index) => {
-                input.addEventListener('input', function () {
-                    if (this.value.length === 1 && index < securityInputs.length - 1) {
-                        securityInputs[index + 1].focus();
-                    }
-                });
-
-                input.addEventListener('keydown', function (e) {
-                    if (e.key === 'Backspace' && this.value === '' && index > 0) {
-                        securityInputs[index - 1].focus();
-                    }
-                });
-            });
-
-            // Amount input formatting
-            const amountInput = document.querySelector('input[placeholder="0.00"]');
-            if (amountInput) {
-                amountInput.addEventListener('blur', function () {
-                    const value = parseFloat(this.value);
-                    if (!isNaN(value)) {
-                        this.value = value.toLocaleString('en-US', {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        });
-                    }
+            // --- Step navigation backwards ---
+            // Back: Step 1 → Step 0
+            const backToStep0 = document.getElementById("backToStep0");
+            if (backToStep0) {
+                backToStep0.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    step1.classList.remove("active");
+                    step0.classList.add("active");
+                    updateProgress(1);
                 });
             }
 
-            // Quick transfer actions
-            const quickTransferItems = document.querySelectorAll('.text-center.cursor-pointer');
-            quickTransferItems.forEach(item => {
-                item.addEventListener('click', function () {
-                    const name = this.querySelector('p').textContent;
-                    if (name !== 'Add New') {
-                        alert(`Quick transfer to ${name} would be initiated.`);
-                    } else {
-                        alert('Add new recipient screen would open.');
-                    }
+            // Back: Step 2 → Step 1
+            if (backToStep1) {
+                backToStep1.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    step2.classList.remove("active");
+                    step1.classList.add("active");
+                    updateProgress(2);
                 });
-            });
+            }
+
+            // Back: Step 3 → Step 2
+            const backToStep2 = document.getElementById("backToStep2");
+            if (backToStep2) {
+                backToStep2.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    step3.classList.remove("active");
+                    step2.classList.add("active");
+                    updateProgress(2);
+                });
+            }
+
 
         });
     </script>
+
 
 
 </body>
