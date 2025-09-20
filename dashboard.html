@@ -100,33 +100,18 @@
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <img src="/assets/logo_2.png" alt="" class="w-15 h-12 object-contain rounded-full">
+                <h1 class="text-xl font-bold ml-3">TrustSphere</h1>
             </div>
-            <h1 class="text-xl font-bold">TrustSphere</h1>
-
-
 
             <div class="flex items-center space-x-4">
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#" data-page="dashboard" class="nav-item px-3 py-2 rounded-lg page-link"><i
                             class="fas fa-home mr-2"></i>Dashboard</a>
-                    <a href="#" data-page="transactions" class="nav-item px-3 py-2 rounded-lg page-link"><i
-                            class="fas fa-exchange-alt mr-2"></i>Transactions</a>
-                    <a href="#" data-page="cards" class="nav-item px-3 py-2 rounded-lg page-link"><i
-                            class="fas fa-credit-card mr-2"></i>Cards</a>
-                    <a href="#" data-page="investments" class="nav-item px-3 py-2 rounded-lg page-link"><i
-                            class="fas fa-chart-line mr-2"></i>Investments</a>
-                    <a href="#" data-page="loans" class="nav-item px-3 py-2 rounded-lg page-link"><i
-                            class="fas fa-hand-holding-usd mr-2"></i>Loans</a>
-                    <a href="#" data-page="support" class="nav-item px-3 py-2 rounded-lg page-link"><i
+
+                    <a href="./support.html" data-page="support" class="nav-item px-3 py-2 rounded-lg page-link"><i
                             class="fas fa-headset mr-2"></i>Support</a>
                 </div>
-                <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <span id="userNameHeader">User</span>
 
-                </div>
             </div>
         </div>
     </header>
@@ -135,7 +120,7 @@
     <main id="dashboard" class="page active container mx-auto px-4 py-8">
         <div class="mb-6">
             <p class="text-blue-900 font-semibold">Good Morning</p>
-            <h2 class="text-2xl font-bold text-gray-800" id="userNameMain">User</h2>
+            <h2 class="text-2xl font-bold text-gray-800" id="userNameMain">James Michael Maddox</h2>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -144,7 +129,7 @@
                 <div class="flex justify-between items-start mb-8">
                     <div>
                         <h3 class="text-lg font-medium">TrustSphere</h3>
-                        <h2 class="text-xl font-bold mt-1" id="userNameCard">User</h2>
+                        <h2 class="text-xl font-bold mt-1" id="userNameCard">James Michael Maddox</h2>
                     </div>
                     <div class="bg-white text-blue-900 px-3 py-1 rounded-full text-sm font-semibold">
                         Premium Client
@@ -225,9 +210,10 @@
                     </div>
                     <h3 class="font-semibold">Transfer</h3>
                     <p class="text-sm text-gray-500 mt-1">Send money to accounts</p>
-                    <button class="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold btn-hover">
-                        Send Money
-                    </button>
+                    <a href="./transfer.html"><button
+                            class="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold btn-hover">
+                            Send Money
+                        </button></a>
                 </div>
 
                 <div class="bg-white rounded-xl p-5 shadow-md flex flex-col items-center text-center relative">
@@ -299,73 +285,137 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                             <tr>
-                                <td class="py-4 px-6">
-                                    <div class="flex items-center">
-                                        <div
-                                            class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                                            <i class="fas fa-home text-blue-600"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium">Real Estate Investment</p>
-                                            <p class="text-sm text-gray-500">Property Trust</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="py-4 px-6">Aug 12, 2025</td>
-                                <td class="py-4 px-6">
-                                    <p class="text-red-600 font-semibold">-$250,000.00</p>
-                                </td>
-                                <td class="py-4 px-6">
-                                    <span class="status-badge status-active">Completed</span>
-                                </td>
+                                <td class="py-4 px-6">Zelle Transfer - WILLIAMS, MYKEL</td>
+                                <td class="py-4 px-6">04/01/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$300.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
                             </tr>
                             <tr>
-                                <td class="py-4 px-6">
-                                    <div class="flex items-center">
-                                        <div
-                                            class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                                            <i class="fas fa-chart-line text-green-600"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium">Dividend Payment</p>
-                                            <p class="text-sm text-gray-500">Stock Portfolio</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="py-4 px-6">Aug 10, 2025</td>
-                                <td class="py-4 px-6">
-                                    <p class="text-green-600 font-semibold">+$42,580.50</p>
-                                </td>
-                                <td class="py-4 px-6">
-                                    <span class="status-badge status-active">Completed</span>
-                                </td>
+                                <td class="py-4 px-6">Zelle Transfer - SANDRA, SHARON</td>
+                                <td class="py-4 px-6">04/01/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$650.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
                             </tr>
                             <tr>
-                                <td class="py-4 px-6">
-                                    <div class="flex items-center">
-                                        <div
-                                            class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                                            <i class="fas fa-credit-card text-purple-600"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium">Card Payment</p>
-                                            <p class="text-sm text-gray-500">VISA Platinum</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="py-4 px-6">Aug 8, 2025</td>
-                                <td class="py-4 px-6">
-                                    <p class="text-red-600 font-semibold">-$12,349.00</p>
-                                </td>
-                                <td class="py-4 px-6">
-                                    <span class="status-badge status-active">Completed</span>
-                                </td>
+                                <td class="py-4 px-6">Cash App Deposit - San Francisco CA</td>
+                                <td class="py-4 px-6">04/01/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$227.06</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Zelle Transfer - STEVE, BRANDON</td>
+                                <td class="py-4 px-6">04/01/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$120.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Cash App Deposit - San Francisco CA</td>
+                                <td class="py-4 px-6">04/01/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$298.50</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Zelle Transfer - WILLIAMS, MYKEL</td>
+                                <td class="py-4 px-6">04/01/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$40.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Cash App Deposit - San Francisco CA</td>
+                                <td class="py-4 px-6">04/01/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$919.70</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Bank of America ATM Deposit - INDEPENDENCE MO</td>
+                                <td class="py-4 px-6">04/02/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$500.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Bank of America ATM Deposit - INDEPENDENCE MO</td>
+                                <td class="py-4 px-6">04/05/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$500.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Bank of America ATM Deposit - KANSAS CITY MO</td>
+                                <td class="py-4 px-6">04/08/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$2,000.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Zelle Transfer - WILLIAMS, MYKEL</td>
+                                <td class="py-4 px-6">04/08/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$100.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Bank of America ATM Deposit - INDEPENDENCE MO</td>
+                                <td class="py-4 px-6">04/09/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$4,950.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Return of Posted Check</td>
+                                <td class="py-4 px-6">04/10/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$8,000.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Bank of America ATM Deposit - OLATHE KS</td>
+                                <td class="py-4 px-6">04/10/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$2,640.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Counter Credit</td>
+                                <td class="py-4 px-6">04/12/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$900.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Bank of America ATM Deposit - RAYTOWN MO</td>
+                                <td class="py-4 px-6">04/12/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$10,805.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Bank of America ATM Deposit - INDEPENDENCE MO</td>
+                                <td class="py-4 px-6">04/18/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$8,500.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Bank of America ATM Deposit - OVERLAND PARK KS</td>
+                                <td class="py-4 px-6">04/22/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$240.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Bank of America ATM Deposit - INDEPENDENCE MO</td>
+                                <td class="py-4 px-6">04/23/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$3,110.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Counter Credit</td>
+                                <td class="py-4 px-6">04/25/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$980.00</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Cash App Deposit - San Francisco CA</td>
+                                <td class="py-4 px-6">04/25/22</td>
+                                <td class="py-4 px-6 text-green-600 font-semibold">+$162.52</td>
+                                <td class="py-4 px-6"><span class="status-badge status-active">Completed</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+
     </main>
 
     <!-- Transactions Page -->
@@ -1433,19 +1483,8 @@
             <i class="fas fa-home"></i>
             <span class="text-xs mt-1">Home</span>
         </a>
-        <a href="#" data-page="transactions" class="page-link flex flex-col items-center text-gray-500">
-            <i class="fas fa-exchange-alt"></i>
-            <span class="text-xs mt-1">Transactions</span>
-        </a>
-        <a href="#" data-page="cards" class="page-link flex flex-col items-center text-gray-500">
-            <i class="fas fa-credit-card"></i>
-            <span class="text-xs mt-1">Cards</span>
-        </a>
-        <a href="#" data-page="investments" class="page-link flex flex-col items-center text-gray-500">
-            <i class="fas fa-chart-line"></i>
-            <span class="text-xs mt-1">Invest</span>
-        </a>
-        <a href="#" data-page="support" class="page-link flex flex-col items-center text-gray-500">
+
+        <a href="./support.html" data-page="support" class="page-link flex flex-col items-center text-gray-500">
             <i class="fas fa-headset"></i>
             <span class="text-xs mt-1">Support</span>
         </a>
@@ -1456,13 +1495,13 @@
         // Page navigation functionality
         document.addEventListener('DOMContentLoaded', function () {
 
-
             const userName = localStorage.getItem("userName") || "User";
 
             // Update all spots with the user’s name
             document.getElementById("userNameHeader").textContent = userName;
             document.getElementById("userNameMain").textContent = userName;
             document.getElementById("userNameCard").textContent = userName;
+
             // Show the dashboard page by default
             showPage('dashboard');
 
@@ -1508,13 +1547,16 @@
                         this.classList.remove('transform', 'scale-95');
                     }, 100);
 
-                    // Simulate navigation (in a real app, this would go to different pages)
+                    // Simulate navigation (adjust to match your page IDs)
                     if (this.textContent.includes('Apply Now')) {
                         showPage('loans');
                     } else if (this.textContent.includes('Manage Cards')) {
                         showPage('cards');
                     } else if (this.textContent.includes('Send Money')) {
-                        window.location.href('transfer.html');
+                        // If transfer.html is a separate page:
+                        window.location.href = 'transfer.html';
+                        // If it's a section inside this app:
+                        // showPage('transfer');
                     } else if (this.textContent.includes('Start Chat')) {
                         alert('Opening live chat window...');
                     }
@@ -1532,9 +1574,9 @@
                 });
             });
 
-
         });
     </script>
+
 
 
 </body>

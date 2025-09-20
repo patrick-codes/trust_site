@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transfer Money - INNOVEST PACIFIC TRUST</title>
+    <title>Transfer Money - TrustSphere</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -160,11 +160,10 @@
     <header class="bg-blue-900 text-white shadow-lg">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <div class="bg-blue-700 p-2 rounded-lg mr-3">
-                    <i class="fas fa-landmark text-2xl"></i>
-                </div>
-                <h1 class="text-xl font-bold">INNOVEST PACIFIC TRUST</h1>
+                <img src="/assets/logo_2.png" alt="" class="w-15 h-12 object-contain rounded-full">
+                <h1 class="text-xl font-bold ml-3">TrustSphere</h1>
             </div>
+
 
             <div class="flex items-center space-x-4">
                 <div class="hidden md:flex items-center space-x-6">
@@ -177,7 +176,7 @@
                     <div class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center">
                         <i class="fas fa-user"></i>
                     </div>
-                    <span class="ml-2">James Michael</span>
+                    <span class="ml-2">James Michael Maddox</span>
                 </div>
             </div>
         </div>
@@ -185,7 +184,7 @@
 
     <main class="container mx-auto px-4 py-8">
         <div class="mb-6 flex items-center">
-            <a href="#" class="text-blue-600 mr-2"><i class="fas fa-arrow-left"></i></a>
+            <a href="./dashboard.html" class="text-blue-600 mr-2"><i class="fas fa-arrow-left"></i></a>
             <h2 class="text-2xl font-bold text-gray-800">Transfer Money</h2>
         </div>
 
@@ -229,59 +228,38 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="relative">
                         <label class="block text-sm font-medium text-gray-700 mb-1">To Account</label>
-                        <div class="border border-gray-300 p-4 rounded-lg">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="font-medium">Select recipient</p>
-                                </div>
-                                <i class="fas fa-chevron-down text-gray-500"></i>
+                        <div id="recipientDropdownBtn"
+                            class="border border-gray-300 p-4 rounded-lg cursor-pointer flex justify-between items-center">
+                            <div>
+                                <p id="selectedRecipient" class="font-medium text-gray-600">Select recipient</p>
                             </div>
+                            <i class="fas fa-chevron-down text-gray-500"></i>
+                        </div>
+
+                        <!-- Dropdown List -->
+                        <div id="recipientDropdown"
+                            class="absolute mt-1 w-full bg-white border border-gray-300 rounded-lg shadow-lg hidden z-10">
+                            <ul class="divide-y divide-gray-200">
+                                <li class="p-3 hover:bg-blue-50 cursor-pointer recipient-item"
+                                    data-value="Williams - Account">
+                                    Williams
+                                </li>
+                                <li class="p-3 hover:bg-blue-50 cursor-pointer recipient-item"
+                                    data-value="Sandra - Account">
+                                    Sandra
+                                </li>
+                                <li class="p-3 hover:bg-blue-50 cursor-pointer recipient-item"
+                                    data-value="Steve - Account">
+                                    Steve
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Recent Recipients</label>
-                    <div class="space-y-3">
-                        <div class="account-item border border-gray-300 p-4 rounded-lg cursor-pointer">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Robert Johnson</p>
-                                    <p class="text-sm text-gray-500">Chase •••• 2281</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="account-item border border-gray-300 p-4 rounded-lg cursor-pointer">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-green-600"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Sarah Williams</p>
-                                    <p class="text-sm text-gray-500">Bank of America •••• 4492</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="account-item border border-gray-300 p-4 rounded-lg cursor-pointer">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-building text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Michael & Associates</p>
-                                    <p class="text-sm text-gray-500">Wells Fargo •••• 7765</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
@@ -297,10 +275,21 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Transfer Date</label>
-                        <div class="flex space-x-2">
-                            <button class="px-4 py-3 bg-blue-600 text-white rounded-lg font-medium">Now</button>
-                            <button
-                                class="px-4 py-3 bg-white border border-gray-300 rounded-lg font-medium">Later</button>
+                        <div class="flex space-x-2" id="transferDateOptions">
+                            <button id="nowBtn"
+                                class="px-4 py-3 bg-blue-600 text-white rounded-lg font-medium focus:outline-none">
+                                Now
+                            </button>
+                            <button id="laterBtn"
+                                class="px-4 py-3 bg-white border border-gray-300 rounded-lg font-medium focus:outline-none">
+                                Later
+                            </button>
+                        </div>
+
+                        <!-- Date Picker (Hidden initially) -->
+                        <div id="datePickerContainer" class="mt-3 hidden">
+                            <input type="date" id="transferDateInput"
+                                class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                         </div>
                     </div>
                 </div>
@@ -312,10 +301,24 @@
                 </div>
 
                 <div class="flex justify-end">
-                    <button id="nextToStep2"
-                        class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold btn-hover">
-                        Continue <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
+                    <div class="flex items-center space-x-2">
+                        <button id="nextToStep2"
+                            class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold btn-hover">
+                            Continue <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+
+                        <!-- Spinner (hidden by default) -->
+                        <div id="loadingSpinner" class="hidden">
+                            <svg class="animate-spin h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -460,45 +463,98 @@
             </div>
         </div>
 
-        <!-- Quick Actions -->
-        <div class="bg-white rounded-xl shadow-md p-6">
-            <h3 class="text-lg font-semibold mb-4">Quick Transfer</h3>
-            <p class="text-gray-600 mb-4">Send money to your frequently used contacts</p>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="text-center cursor-pointer">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <i class="fas fa-user text-blue-600 text-xl"></i>
-                    </div>
-                    <p class="text-sm font-medium">Robert Johnson</p>
-                </div>
+        <!-- Modal -->
+        <div id="frozenModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+            <div class="bg-white p-6 rounded-xl shadow-lg w-96 text-center">
+                <h2 class="text-lg font-bold mb-2">🚨 Important Account Status Update</h2>
+                <p class="text-sm text-gray-700 mb-4">
+                    Dear Customer, <br><br>
+                    We wish to inform you that your account with <strong>TrustSphere</strong> has been
+                    temporarily
+                    frozen due to extended inactivity, in accordance with applicable legal and regulatory requirements.
+                    <br><br>
+                    To restore full access, please ensure that all outstanding obligations, including any pending fees
+                    or
+                    taxes, are settled.
+                    <br><br>
+                    Once completed, kindly reach out to our support team at:
+                </p>
 
-                <div class="text-center cursor-pointer">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <i class="fas fa-user text-green-600 text-xl"></i>
-                    </div>
-                    <p class="text-sm font-medium">Sarah Williams</p>
-                </div>
-
-                <div class="text-center cursor-pointer">
-                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <i class="fas fa-building text-purple-600 text-xl"></i>
-                    </div>
-                    <p class="text-sm font-medium">Michael & Associates</p>
-                </div>
-
-                <div class="text-center cursor-pointer">
-                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <i class="fas fa-plus text-yellow-600 text-xl"></i>
-                    </div>
-                    <p class="text-sm font-medium">Add New</p>
-                </div>
+                <a href="mailto:support@Innovestpacifictrust.com"
+                    class="text-blue-600 underline">support@trustsphere.com</a>
+                <br>
+                <a href="mailto:info@Innovestpacifictrust.com" class="text-blue-600 underline">info@trustsphere.com</a>
+                </p>
+                <button id="closeModal" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">
+                    Close
+                </button>
             </div>
         </div>
+        <!-- Footer -->
+        <footer class="bg-blue-900 text-white mt-16 py-8">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">TRUSTSPHERE</h3>
+                        <p class="text-sm text-blue-200">Providing premium wealth management and trust services since
+                            1987.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                        <p class="text-sm text-blue-200"><i class="fas fa-phone-alt mr-2"></i> +1 (800) 123-4567</p>
+                        <p class="text-sm text-blue-200 mt-2"><i class="fas fa-envelope mr-2"></i>
+                            support@trustsphere.com
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-sm text-blue-200 hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="text-sm text-blue-200 hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-sm text-blue-200 hover:text-white">Security</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-blue-800 mt-8 pt-6 text-sm text-blue-300 text-center">
+                    <p>© 2025 TrustSphere. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+
+            const nowBtn = document.getElementById("nowBtn");
+            const laterBtn = document.getElementById("laterBtn");
+            const datePickerContainer = document.getElementById("datePickerContainer");
+            const datePickerInput = document.getElementById("transferDateInput");
+
+            const dropdownBtn = document.getElementById("recipientDropdownBtn");
+            const dropdown = document.getElementById("recipientDropdown");
+            const selectedRecipient = document.getElementById("selectedRecipient");
+            const items = document.querySelectorAll(".recipient-item");
+
             // Step navigation
             const step1 = document.getElementById('step1');
             const step2 = document.getElementById('step2');
@@ -507,6 +563,60 @@
             const nextToStep2 = document.getElementById('nextToStep2');
             const backToStep1 = document.getElementById('backToStep1');
             const nextToStep3 = document.getElementById('nextToStep3');
+
+            // Spinner + modal
+            const frozenModal = document.getElementById('frozenModal');
+            const closeModal = document.getElementById('closeModal');
+            const loadingSpinner = document.getElementById("loadingSpinner");
+
+            // Function to reset styles
+            function resetButtons() {
+                nowBtn.classList.remove("bg-blue-600", "text-white");
+                nowBtn.classList.add("bg-white", "border", "border-gray-300", "text-gray-800");
+
+                laterBtn.classList.remove("bg-blue-600", "text-white");
+                laterBtn.classList.add("bg-white", "border", "border-gray-300", "text-gray-800");
+            }
+
+            // "Now" button click
+            nowBtn.addEventListener("click", () => {
+                resetButtons();
+                nowBtn.classList.add("bg-blue-600", "text-white");
+                nowBtn.classList.remove("bg-white", "border", "border-gray-300");
+                datePickerContainer.classList.add("hidden");
+                datePickerInput.value = ""; // clear date if switching back to Now
+            });
+
+            // "Later" button click
+            laterBtn.addEventListener("click", () => {
+                resetButtons();
+                laterBtn.classList.add("bg-blue-600", "text-white");
+                laterBtn.classList.remove("bg-white", "border", "border-gray-300");
+                datePickerContainer.classList.remove("hidden");
+            });
+
+            // Toggle dropdown
+            dropdownBtn.addEventListener("click", () => {
+                dropdown.classList.toggle("hidden");
+            });
+
+            // Select recipient
+            items.forEach(item => {
+                item.addEventListener("click", () => {
+                    const value = item.getAttribute("data-value");
+                    selectedRecipient.textContent = value;
+                    selectedRecipient.classList.remove("text-gray-600");
+                    selectedRecipient.classList.add("text-gray-800", "font-semibold");
+                    dropdown.classList.add("hidden");
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", (e) => {
+                if (!dropdownBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.add("hidden");
+                }
+            });
 
             // Update progress indicators
             function updateProgress(step) {
@@ -539,34 +649,34 @@
                 });
             }
 
-            // Navigate to step 2
-            nextToStep2.addEventListener('click', function () {
-                step1.classList.remove('active');
-                step2.classList.add('active');
-                updateProgress(2);
-            });
+            // 🚫 Freeze at Step 1 with spinner then modal
+            nextToStep2.addEventListener('click', function (e) {
+                e.preventDefault();
 
-            // Navigate back to step 1
-            backToStep1.addEventListener('click', function () {
-                step2.classList.remove('active');
+                // Stay on Step 1
                 step1.classList.add('active');
-                updateProgress(1);
-            });
-
-            // Navigate to step 3
-            nextToStep3.addEventListener('click', function () {
                 step2.classList.remove('active');
-                step3.classList.add('active');
-                updateProgress(3);
+                step3.classList.remove('active');
+                updateProgress(1);
 
-                // Auto-fill security code for demo purposes
-                const inputs = document.querySelectorAll('input[type="text"]');
-                inputs.forEach((input, index) => {
-                    input.value = index + 1;
-                });
+                // Show spinner
+                loadingSpinner.classList.remove("hidden");
+                nextToStep2.disabled = true;
+
+                // After 3s hide spinner and show modal
+                setTimeout(() => {
+                    loadingSpinner.classList.add("hidden");
+                    frozenModal.classList.remove('hidden');
+                    nextToStep2.disabled = false;
+                }, 3000);
             });
 
-            // Account selection
+            // Close modal
+            closeModal.addEventListener('click', function () {
+                frozenModal.classList.add('hidden');
+            });
+
+            // Account selection highlight
             const accountItems = document.querySelectorAll('.account-item');
             accountItems.forEach(item => {
                 item.addEventListener('click', function () {
@@ -593,21 +703,22 @@
 
             // Amount input formatting
             const amountInput = document.querySelector('input[placeholder="0.00"]');
-            amountInput.addEventListener('blur', function () {
-                const value = parseFloat(this.value);
-                if (!isNaN(value)) {
-                    this.value = value.toLocaleString('en-US', {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    });
-                }
-            });
+            if (amountInput) {
+                amountInput.addEventListener('blur', function () {
+                    const value = parseFloat(this.value);
+                    if (!isNaN(value)) {
+                        this.value = value.toLocaleString('en-US', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        });
+                    }
+                });
+            }
 
             // Quick transfer actions
             const quickTransferItems = document.querySelectorAll('.text-center.cursor-pointer');
             quickTransferItems.forEach(item => {
                 item.addEventListener('click', function () {
-                    // For demo purposes, just show an alert
                     const name = this.querySelector('p').textContent;
                     if (name !== 'Add New') {
                         alert(`Quick transfer to ${name} would be initiated.`);
@@ -616,8 +727,11 @@
                     }
                 });
             });
+
         });
     </script>
+
+
 </body>
 
 </html>

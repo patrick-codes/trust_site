@@ -65,9 +65,10 @@
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <div class="flex items-center">
-                    <i class="fas fa-shield-alt text-2xl mr-2"></i>
+                    <img src="/assets/logo_2.png" alt="" class="w-15 h-12 object-contain rounded-full">
+                    <h1 class="text-xl font-bold ml-3">TrustSphere</h1>
                 </div>
-                <h1 class="text-xl font-bold"><span>TrustSphere</span></h1>
+
             </div>
         </div>
     </header>
@@ -112,7 +113,8 @@
                             </button>
                         </div>
                         <div class="text-right mt-2">
-                            <a href="#" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                            <a href="./password_reset.html" class="text-sm text-blue-600 hover:underline">Forgot
+                                Password?</a>
                         </div>
                     </div>
 
@@ -255,7 +257,7 @@
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800">Verify Your Account</h2>
                     <p class="text-gray-600">Enter the verification code sent to your phone</p>
-                    <p class="text-gray-800 font-medium mt-2" id="phoneNumberDisplay">+1 (***) ***-****</p>
+                    <p class="text-gray-800 font-medium mt-2" id="phoneNumberDisplay">(***) ***-****</p>
                 </div>
 
                 <form id="otpForm">
@@ -387,15 +389,14 @@
                     if (response.ok) {
 
 
-
+                        const user = data.user;
+                        // Save user info in localStorage
+                        localStorage.setItem("userName", user.name);
+                        localStorage.setItem("userEmail", user.email);
+                        localStorage.setItem("userId", user._id);
+                        // you can save more if you like (phone, accountNo, etc.)
                         // If user is not verified, show OTP screen
                         if (data.userId) {
-                            const user = data.user;
-                            // Save user info in localStorage
-                            localStorage.setItem("userName", user.name);
-                            localStorage.setItem("userEmail", user.email);
-                            localStorage.setItem("userId", user._id);
-                            // you can save more if you like (phone, accountNo, etc.)
                             userId = data.userId;
                             const phone = data.phone || '';
                             const maskedPhone = phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) ***-$3');
@@ -610,6 +611,25 @@
                     }
                 }, 1000);
             }
+
+            if (data.phone) {
+                // Assume backend sends: "+233246123456" or "+14155552671"
+                const phone = data.phone;
+
+                // Extract country code (everything before the first 3–4 digits)
+                const countryCode = phone.match(/^\+\d{1,3}/)?.[0] || "";
+
+                // Extract local part (last 10 digits for example)
+                const localPart = phone.replace(countryCode, "");
+
+                // Mask the local part: e.g. 0246123456 -> (024) ***-456
+                const maskedLocal = localPart.replace(/(\d{3})(\d{3})(\d{4})/, "($1) ***-$3");
+
+                // Show in OTP screen
+                phoneNumberDisplay.textContent = `${countryCode} ${maskedLocal}`;
+            }
+
+
         });
     </script>
 </body>
