@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrustSphere - Authentication</title>
+    <title>SmartLuca Trust - Authentication</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -66,7 +66,7 @@
             <div class="flex items-center">
                 <div class="flex items-center">
                     <img src="/assets/logo_2.png" alt="" class="w-15 h-12 object-contain rounded-full">
-                    <h1 class="text-xl font-bold ml-3">TrustSphere</h1>
+                    <h1 class="text-xl font-bold ml-3">SmartLuca Trust</h1>
                 </div>
 
             </div>
@@ -119,10 +119,18 @@
                     </div>
 
                     <div class="mb-6">
-                        <button type="submit"
-                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover">
-                            Sign In
+                        <button type="submit" id="loginBtn"
+                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover flex items-center justify-center">
+                            <span id="loginBtnText">Sign In</span>
+                            <svg id="loginSpinner" class="animate-spin ml-2 h-5 w-5 text-white hidden"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z">
+                                </path>
+                            </svg>
                         </button>
+
                     </div>
 
                     <div class="text-center">
@@ -141,7 +149,7 @@
                         <i class="fas fa-user-plus text-blue-600 text-2xl"></i>
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800">Create Account</h2>
-                    <p class="text-gray-600">Join TrustSphere today</p>
+                    <p class="text-gray-600">Join SmartLuca Trust today</p>
                 </div>
 
                 <form id="signupForm">
@@ -234,10 +242,18 @@
                     </div>
 
                     <div class="mb-6">
-                        <button type="submit"
-                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover">
-                            Create Account
+                        <button type="submit" id="signupBtn"
+                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover flex justify-center items-center">
+                            <span id="signupBtnText">Create Account</span>
+                            <svg id="signupSpinner" class="animate-spin h-5 w-5 ml-2 text-white hidden"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z">
+                                </path>
+                            </svg>
                         </button>
+
                     </div>
 
                     <div class="text-center">
@@ -256,8 +272,7 @@
                         <i class="fas fa-mobile-alt text-blue-600 text-2xl"></i>
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800">Verify Your Account</h2>
-                    <p class="text-gray-600">Enter the verification code sent to your phone</p>
-                    <p class="text-gray-800 font-medium mt-2" id="phoneNumberDisplay">(***) ***-****</p>
+                    <p class="text-gray-600">Enter the verification code sent to your email</p>
                 </div>
 
                 <form id="otpForm">
@@ -280,15 +295,23 @@
                     </div>
 
                     <div class="mb-6">
-                        <button type="submit"
-                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover">
-                            Verify & Continue
+                        <button type="submit" id="otpBtn"
+                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover flex justify-center items-center">
+                            <span id="otpBtnText">Verify & Continue</span>
+                            <svg id="otpSpinner" class="animate-spin h-5 w-5 ml-2 text-white hidden"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z">
+                                </path>
+                            </svg>
                         </button>
+
                     </div>
 
                     <div class="text-center">
                         <a href="#" id="changePhoneNumber" class="text-blue-600 hover:underline font-medium">Change
-                            Phone Number</a>
+                            Email</a>
                     </div>
                 </form>
             </div>
@@ -296,6 +319,330 @@
     </main>
 
     <script>
+
+        // API base URL - change this to match your backend URL
+        const API_BASE_URL = 'http://localhost:5000/api/auth';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // DOM Elements
+            const loginScreen = document.getElementById('loginScreen');
+            const signupScreen = document.getElementById('signupScreen');
+            const otpScreen = document.getElementById('otpScreen');
+            const showSignup = document.getElementById('showSignup');
+            const showLogin = document.getElementById('showLogin');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const otpForm = document.getElementById('otpForm');
+            const togglePassword = document.getElementById('togglePassword');
+            const toggleSignupPassword = document.getElementById('toggleSignupPassword');
+            const resendOtp = document.getElementById('resendOtp');
+            const changePhoneNumber = document.getElementById('changePhoneNumber');
+            const phoneNumberDisplay = document.getElementById('phoneNumberDisplay');
+            const countdownEl = document.getElementById('countdown');
+            const otpInputs = document.querySelectorAll('.otp-input');
+
+            let userId = null;
+            let countdownInterval = null;
+
+            // Show Signup Screen
+            showSignup.addEventListener('click', function (e) {
+                e.preventDefault();
+                loginScreen.classList.remove('active');
+                signupScreen.classList.add('active');
+                otpScreen.classList.remove('active');
+            });
+
+            // Show Login Screen
+            showLogin.addEventListener('click', function (e) {
+                e.preventDefault();
+                signupScreen.classList.remove('active');
+                loginScreen.classList.add('active');
+                otpScreen.classList.remove('active');
+            });
+
+            // Toggle Login Password Visibility
+            togglePassword.addEventListener('click', function () {
+                const passwordInput = document.getElementById('loginPassword');
+                const icon = this.querySelector('i');
+
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.replace('fa-eye', 'fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.replace('fa-eye-slash', 'fa-eye');
+                }
+            });
+
+            // Toggle Signup Password Visibility
+            toggleSignupPassword.addEventListener('click', function () {
+                const passwordInput = document.getElementById('signupPassword');
+                const icon = this.querySelector('i');
+
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.replace('fa-eye', 'fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.replace('fa-eye-slash', 'fa-eye');
+                }
+            });
+
+            // Login Form Submission
+            loginForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+
+                // Spinner elements
+                const loginBtn = document.getElementById("loginBtn");
+                const loginBtnText = document.getElementById("loginBtnText");
+                const loginSpinner = document.getElementById("loginSpinner");
+
+                try {
+                    // Show spinner
+                    loginBtn.disabled = true;
+                    loginBtnText.textContent = "Signing in...";
+                    loginSpinner.classList.remove("hidden");
+
+                    const response = await fetch(`${API_BASE_URL}/login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        const user = data.data.user;
+                        // Save user info in localStorage
+                        localStorage.setItem("userName", `${user.firstName} ${user.lastName}`);
+                        localStorage.setItem("userEmail", user.email);
+                        localStorage.setItem("userId", user.id);
+
+                        // Store token
+                        localStorage.setItem('token', data.data.token);
+
+                        alert('Login successful! Redirecting to dashboard...');
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        alert(data.message || 'Login failed. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    alert('An error occurred during login. Please try again.');
+                } finally {
+                    // Hide spinner
+                    loginBtn.disabled = false;
+                    loginBtnText.textContent = "Sign In";
+                    loginSpinner.classList.add("hidden");
+                }
+            });
+
+            // Signup Form Submission
+            signupForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const firstName = document.getElementById('firstName').value.trim();
+                const lastName = document.getElementById('lastName').value.trim();
+                const email = document.getElementById('signupEmail').value.trim();
+                const phone = document.getElementById('phoneNumber').value.trim();
+                const password = document.getElementById('signupPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const terms = document.getElementById('terms').checked;
+
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match!');
+                    return;
+                }
+                if (!terms) {
+                    alert('You must agree to the Terms of Service and Privacy Policy');
+                    return;
+                }
+
+                const signupBtn = document.getElementById("signupBtn");
+                const signupBtnText = document.getElementById("signupBtnText");
+                const signupSpinner = document.getElementById("signupSpinner");
+
+                // Show spinner & disable button
+                signupBtn.disabled = true;
+                signupBtnText.textContent = "Creating...";
+                signupSpinner.classList.remove("hidden");
+
+                try {
+                    const response = await fetch(`${API_BASE_URL}/signup`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ firstName, lastName, email, phone, password })
+                    });
+
+                    const data = await response.json();
+                    console.log("Signup response:", data);
+
+                    if (response.ok && data.success) {
+                        const userData = data.data; // use what backend actually returns
+
+                        // If backend sends id, great, else skip it
+                        if (userData.id) {
+                            localStorage.setItem("userId", userData.id);
+                        }
+
+                        if (userData.email) {
+                            localStorage.setItem("signupEmail", userData.email);
+                        } else {
+                            localStorage.setItem("signupEmail", email); // fallback
+                        }
+
+                        // Mask phone
+                        if (userData.phone) {
+                            const maskedPhone = userData.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) ***-$3');
+                            phoneNumberDisplay.textContent = `+233 ${maskedPhone}`;
+                        }
+
+                        signupScreen.classList.remove('active');
+                        otpScreen.classList.add('active');
+                        startCountdown();
+                    } else {
+                        alert(data.message || 'Signup failed. Please try again.');
+                    }
+
+                } catch (error) {
+                    console.error('Signup error:', error);
+                    alert('An error occurred during signup. Please try again.');
+                } finally {
+                    // Reset button state
+                    signupBtn.disabled = false;
+                    signupBtnText.textContent = "Create Account";
+                    signupSpinner.classList.add("hidden");
+                }
+            });
+
+
+            // OTP Verification Form Submission
+            otpForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                let otp = "";
+                otpInputs.forEach(input => otp += input.value);
+
+                if (otp.length !== 6) {
+                    alert("Please enter the 6-digit OTP code.");
+                    return;
+                }
+
+                const email = localStorage.getItem("signupEmail");
+                if (!email) {
+                    alert("Missing email. Please sign up again.");
+                    return;
+                }
+
+                const otpBtn = document.getElementById("otpBtn");
+                const otpBtnText = document.getElementById("otpBtnText");
+                const otpSpinner = document.getElementById("otpSpinner");
+
+                // Show spinner & disable button
+                otpBtn.disabled = true;
+                otpBtnText.textContent = "Verifying...";
+                otpSpinner.classList.remove("hidden");
+
+                try {
+                    const res = await fetch(`${API_BASE_URL}/verify-otp`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email, otp }),
+                    });
+
+                    const data = await res.json();
+                    console.log("OTP response:", data);
+
+                    if (res.ok && data.success) {
+                        alert("Account verified successfully!");
+                        localStorage.setItem("authToken", data.data.token);
+                        window.location.href = "dashboard.html";
+                    } else {
+                        alert(data.message || "OTP verification failed.");
+                    }
+                } catch (err) {
+                    console.error("OTP verification error:", err);
+                    alert("Something went wrong while verifying OTP.");
+                } finally {
+                    // Reset button state
+                    otpBtn.disabled = false;
+                    otpBtnText.textContent = "Verify & Continue";
+                    otpSpinner.classList.add("hidden");
+                }
+            });
+
+            // Resend OTP
+            resendOtp.addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                try {
+                    const response = await fetch(`${API_BASE_URL}/resend-otp`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ userId })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        startCountdown();
+                        alert('New verification code sent!');
+                    } else {
+                        alert(data.message || 'Failed to resend code. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Resend OTP error:', error);
+                    alert('An error occurred while resending the code. Please try again.');
+                }
+            });
+
+            // Change Phone Number
+            changePhoneNumber.addEventListener('click', function (e) {
+                e.preventDefault();
+                otpScreen.classList.remove('active');
+                signupScreen.classList.add('active');
+            });
+
+            // OTP Auto-Tab
+            otpInputs.forEach((input, index) => {
+                input.addEventListener('input', function () {
+                    if (this.value.length === 1 && index < otpInputs.length - 1) {
+                        otpInputs[index + 1].focus();
+                    }
+                });
+                input.addEventListener('keydown', function (e) {
+                    if (e.key === 'Backspace' && this.value === '' && index > 0) {
+                        otpInputs[index - 1].focus();
+                    }
+                });
+            });
+
+            // Countdown Timer
+            function startCountdown() {
+                if (countdownInterval) clearInterval(countdownInterval);
+
+                let timeLeft = 60;
+                countdownEl.textContent = timeLeft;
+                document.querySelector('.text-gray-500').style.display = 'block';
+
+                countdownInterval = setInterval(() => {
+                    timeLeft--;
+                    countdownEl.textContent = timeLeft;
+
+                    if (timeLeft <= 0) {
+                        clearInterval(countdownInterval);
+                        document.querySelector('.text-gray-500').style.display = 'none';
+                    }
+                }, 1000);
+            }
+        });
+
+
+
+        /*
         // API base URL - change this to match your backend URL
         const API_BASE_URL = 'http://localhost:5000/api/auth';
 
@@ -612,26 +959,11 @@
                 }, 1000);
             }
 
-            if (data.phone) {
-                // Assume backend sends: "+233246123456" or "+14155552671"
-                const phone = data.phone;
-
-                // Extract country code (everything before the first 3–4 digits)
-                const countryCode = phone.match(/^\+\d{1,3}/)?.[0] || "";
-
-                // Extract local part (last 10 digits for example)
-                const localPart = phone.replace(countryCode, "");
-
-                // Mask the local part: e.g. 0246123456 -> (024) ***-456
-                const maskedLocal = localPart.replace(/(\d{3})(\d{3})(\d{4})/, "($1) ***-$3");
-
-                // Show in OTP screen
-                phoneNumberDisplay.textContent = `${countryCode} ${maskedLocal}`;
-            }
-
-
         });
+    */
+
     </script>
+
 </body>
 
 </html>
