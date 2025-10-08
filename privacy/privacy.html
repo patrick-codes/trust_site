@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal - SmartLuca Trust</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6eef7 100%);
+            min-height: 100vh;
+        }
+
+        .legal-section {
+            display: none;
+        }
+
+        .legal-section.active {
+            display: block;
+        }
+
+        .legal-nav {
+            position: sticky;
+            top: 20px;
+        }
+
+        .legal-nav-item {
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .legal-nav-item.active {
+            border-left-color: #3B82F6;
+            background-color: #EFF6FF;
+        }
+
+        .legal-nav-item:hover {
+            background-color: #F3F4F6;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .section-highlight {
+            background-color: #EFF6FF;
+            border-left: 4px solid #3B82F6;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/assets/logo_2.png" alt="" class="w-15 h-12 object-contain rounded-full">
+                <h1 class="text-xl font-bold ml-3">SmartLuca Trust</h1>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Legal Pages Container -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8 text-center">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Legal Information</h1>
+            <p class="text-xl text-blue-900 font-semibold">Important policies and terms for your protection</p>
+        </div>
+
+        <!-- Legal Navigation -->
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Navigation -->
+            <div class="lg:w-1/4">
+                <div class="bg-white rounded-xl shadow-md p-6 legal-nav">
+                    <h3 class="text-lg font-semibold mb-4">Legal Documents</h3>
+                    <div class="space-y-2">
+                        <button class="legal-nav-item w-full text-left px-4 py-3 rounded-lg font-medium active"
+                            data-section="terms">
+                            <i class="fas fa-file-contract mr-3"></i> Terms of Service
+                        </button>
+                        <button class="legal-nav-item w-full text-left px-4 py-3 rounded-lg font-medium"
+                            data-section="privacy">
+                            <i class="fas fa-shield-alt mr-3"></i> Privacy Policy
+                        </button>
+                        <button class="legal-nav-item w-full text-left px-4 py-3 rounded-lg font-medium"
+                            data-section="cookies">
+                            <i class="fas fa-cookie-bite mr-3"></i> Cookie Policy
+                        </button>
+                        <button class="legal-nav-item w-full text-left px-4 py-3 rounded-lg font-medium"
+                            data-section="disclaimer">
+                            <i class="fas fa-exclamation-triangle mr-3"></i> Disclaimer
+                        </button>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-3">Document Information</h4>
+                        <div class="text-sm text-gray-600 space-y-2">
+                            <div class="flex justify-between">
+                                <span>Last Updated:</span>
+                                <span class="font-medium">September 15, 2023</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Version:</span>
+                                <span class="font-medium">3.2</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Effective Date:</span>
+                                <span class="font-medium">October 1, 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legal Content -->
+            <div class="lg:w-3/4">
+                <!-- Terms of Service -->
+                <div id="terms" class="legal-section active bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-3xl font-bold text-gray-800">Terms of Service</h2>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Version
+                            3.2</span>
+                    </div>
+
+                    <div class="prose max-w-none">
+                        <p class="text-gray-600 mb-6">Last updated: September 15, 2023</p>
+
+                        <div class="mb-8 p-4 section-highlight">
+                            <p class="font-semibold">Please read these Terms of Service carefully before using our
+                                services. By accessing or using our platform, you agree to be bound by these terms.</p>
+                        </div>
+
+                        <div id="acceptance" class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">1. Acceptance of Terms</h3>
+                            <p class="mb-4">By accessing and using the SmartLuca Trust website, mobile
+                                application, and services (collectively, the "Services"), you accept and agree to be
+                                bound by the terms and provision of this agreement.</p>
+                            <p>If you do not agree to abide by these terms, please do not use our Services. We reserve
+                                the right to update and change these terms without notice.</p>
+                        </div>
+
+                        <div id="account" class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">2. Account Registration</h3>
+                            <p class="mb-4">To access certain features of our Services, you must register for an
+                                account. When registering, you agree to:</p>
+                            <ul class="list-disc pl-6 mb-4 space-y-2">
+                                <li>Provide accurate, current, and complete information</li>
+                                <li>Maintain and promptly update your account information</li>
+                                <li>Maintain the security of your password and accept all risks of unauthorized access
+                                </li>
+                                <li>Notify us immediately of any unauthorized use of your account</li>
+                                <li>Be responsible for all activities that occur under your account</li>
+                            </ul>
+                            <p>We reserve the right to refuse service, terminate accounts, or remove content at our sole
+                                discretion.</p>
+                        </div>
+
+                        <div id="services" class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">3. Services Description</h3>
+                            <p class="mb-4">SmartLuca Trust provides wealth management and financial services
+                                including but not limited to:</p>
+                            <ul class="list-disc pl-6 mb-4 space-y-2">
+                                <li>Investment management and advisory services</li>
+                                <li>Trust and estate planning</li>
+                                <li>Banking and payment processing</li>
+                                <li>Digital card services</li>
+                                <li>Loan and financing services</li>
+                            </ul>
+                            <p>All services are subject to availability and may be modified, suspended, or discontinued
+                                at any time without notice.</p>
+                        </div>
+
+                        <div id="fees" class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">4. Fees and Payments</h3>
+                            <p class="mb-4">Certain Services may be subject to fees and charges. By using these
+                                Services, you agree to pay all applicable fees and taxes.</p>
+                            <ul class="list-disc pl-6 mb-4 space-y-2">
+                                <li>Fees are non-refundable unless otherwise stated</li>
+                                <li>We may change our fees at any time by providing notice</li>
+                                <li>You authorize us to charge your payment method for all applicable fees</li>
+                                <li>Late payments may be subject to additional charges</li>
+                            </ul>
+                        </div>
+
+                        <div id="intellectual" class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">5. Intellectual Property</h3>
+                            <p class="mb-4">All content included on our platform, such as text, graphics, logos, images,
+                                and software, is the property of SmartLuca Trust or its content suppliers and
+                                protected by international copyright laws.</p>
+                            <p>You may not modify, copy, distribute, transmit, display, perform, reproduce, publish,
+                                license, create derivative works from, transfer, or sell any information obtained from
+                                our Services.</p>
+                        </div>
+
+                        <div id="limitation" class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">6. Limitation of Liability</h3>
+                            <p class="mb-4">To the fullest extent permitted by applicable law, SmartLuca Trust
+                                shall not be liable for any indirect, incidental, special, consequential, or punitive
+                                damages, including without limitation, loss of profits, data, use, goodwill, or other
+                                intangible losses.</p>
+                            <p>Our total liability to you for all claims arising from or related to the Services shall
+                                not exceed the amount you have paid to us in the last six months.</p>
+                        </div>
+
+                        <div id="termination" class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">7. Termination</h3>
+                            <p class="mb-4">We may terminate or suspend your account and bar access to the Services
+                                immediately, without prior notice or liability, under our sole discretion, for any
+                                reason whatsoever and without limitation, including but not limited to a breach of the
+                                Terms.</p>
+                            <p>Upon termination, your right to use the Services will immediately cease. If you wish to
+                                terminate your account, you may simply discontinue using the Services.</p>
+                        </div>
+
+                        <div id="governing" class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">8. Governing Law</h3>
+                            <p class="mb-4">These Terms shall be governed and construed in accordance with the laws of
+                                the State of Delaware, United States, without regard to its conflict of law provisions.
+                            </p>
+                            <p>Any disputes arising under these Terms shall be resolved in the state or federal courts
+                                located in Wilmington, Delaware.</p>
+                        </div>
+
+                        <div id="changes" class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">9. Changes to Terms</h3>
+                            <p class="mb-4">We reserve the right, at our sole discretion, to modify or replace these
+                                Terms at any time. If a revision is material, we will provide at least 30 days' notice
+                                prior to any new terms taking effect.</p>
+                            <p>By continuing to access or use our Services after those revisions become effective, you
+                                agree to be bound by the revised terms.</p>
+                        </div>
+
+                        <div id="contact" class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">10. Contact Information</h3>
+                            <p class="mb-4">If you have any questions about these Terms, please contact us at:</p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="font-medium">SmartLuca Trust Legal Department</p>
+                                <p>Email: smartlucatrust@gmail.com</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Privacy Policy -->
+                <div id="privacy" class="legal-section bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-3xl font-bold text-gray-800">Privacy Policy</h2>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Version
+                            3.2</span>
+                    </div>
+
+                    <div class="prose max-w-none">
+                        <p class="text-gray-600 mb-6">Last updated: September 15, 2023</p>
+
+                        <div class="mb-8 p-4 section-highlight">
+                            <p class="font-semibold">SmartLuca Trust is committed to protecting your privacy.
+                                This Privacy Policy explains how we collect, use, disclose, and safeguard your
+                                information when you use our Services.</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Information We Collect</h3>
+                            <p class="mb-4">We collect several types of information from and about users of our
+                                Services, including:</p>
+                            <ul class="list-disc pl-6 mb-4 space-y-2">
+                                <li><strong>Personal Information:</strong> Name, email address, phone number, date of
+                                    birth, government-issued ID</li>
+                                <li><strong>Financial Information:</strong> Bank account details, transaction history,
+                                    investment information</li>
+                                <li><strong>Technical Information:</strong> IP address, browser type, device
+                                    information, usage data</li>
+                                <li><strong>Location Information:</strong> With your consent, we may collect precise
+                                    location data</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">How We Use Your Information</h3>
+                            <p class="mb-4">We use information that we collect about you or that you provide to us,
+                                including any personal information:</p>
+                            <ul class="list-disc pl-6 mb-4 space-y-2">
+                                <li>To provide and maintain our Services</li>
+                                <li>To process your transactions and send related information</li>
+                                <li>To manage your account and provide customer support</li>
+                                <li>To send administrative information and updates</li>
+                                <li>For security and fraud prevention</li>
+                                <li>To comply with legal obligations</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Information Sharing and Disclosure
+                            </h3>
+                            <p class="mb-4">We may share your information in the following situations:</p>
+                            <ul class="list-disc pl-6 mb-4 space-y-2">
+                                <li><strong>With Service Providers:</strong> We may share your information with
+                                    third-party vendors who perform services on our behalf</li>
+                                <li><strong>For Legal Reasons:</strong> We may disclose information where required by
+                                    law or to protect our rights</li>
+                                <li><strong>Business Transfers:</strong> In connection with any merger or sale of
+                                    company assets</li>
+                                <li><strong>With Your Consent:</strong> We may share your information with your consent
+                                </li>
+                            </ul>
+                            <p>We do not sell your personal information to third parties.</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Data Security</h3>
+                            <p class="mb-4">We have implemented measures designed to secure your personal information
+                                from accidental loss and from unauthorized access, use, alteration, and disclosure.</p>
+                            <p>All information you provide to us is stored on secure servers behind firewalls. Any
+                                payment transactions will be encrypted using SSL technology.</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Your Data Protection Rights</h3>
+                            <p class="mb-4">Depending on your location, you may have the following data protection
+                                rights:</p>
+                            <ul class="list-disc pl-6 mb-4 space-y-2">
+                                <li><strong>Access:</strong> You have the right to request copies of your personal data
+                                </li>
+                                <li><strong>Rectification:</strong> You have the right to request correction of
+                                    inaccurate information</li>
+                                <li><strong>Erasure:</strong> You have the right to request deletion of your personal
+                                    data</li>
+                                <li><strong>Restrict Processing:</strong> You have the right to request restriction of
+                                    processing</li>
+                                <li><strong>Data Portability:</strong> You have the right to request transfer of your
+                                    data</li>
+                                <li><strong>Object to Processing:</strong> You have the right to object to our
+                                    processing of your data</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">International Data Transfers</h3>
+                            <p class="mb-4">Your information may be transferred to and maintained on computers located
+                                outside of your state, province, country, or other governmental jurisdiction where the
+                                data protection laws may differ from those of your jurisdiction.</p>
+                            <p>We will take all steps reasonably necessary to ensure that your data is treated securely
+                                and in accordance with this Privacy Policy.</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Children's Privacy</h3>
+                            <p class="mb-4">Our Services are not intended for individuals under the age of 18. We do not
+                                knowingly collect personal information from children under 18.</p>
+                            <p>If you are a parent or guardian and believe your child has provided us with personal
+                                information, please contact us immediately.</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Changes to This Privacy Policy</h3>
+                            <p class="mb-4">We may update our Privacy Policy from time to time. We will notify you of
+                                any changes by posting the new Privacy Policy on this page and updating the "Last
+                                updated" date.</p>
+                            <p>You are advised to review this Privacy Policy periodically for any changes. Changes to
+                                this Privacy Policy are effective when they are posted on this page.</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Contact Us</h3>
+                            <p class="mb-4">If you have any questions about this Privacy Policy, please contact us:</p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="font-medium">SmartLuca Trust Privacy Office</p>
+                                <p>Email: smartlucatrust@gmail.com</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cookie Policy -->
+                <div id="cookies" class="legal-section bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-3xl font-bold text-gray-800">Cookie Policy</h2>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Version
+                            3.2</span>
+                    </div>
+
+                    <div class="prose max-w-none">
+                        <p class="text-gray-600 mb-6">Last updated: September 15, 2023</p>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">What Are Cookies</h3>
+                            <p class="mb-4">Cookies are small text files that are placed on your computer or mobile
+                                device when you visit our website. They are widely used to make websites work more
+                                efficiently and provide information to the website owners.</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">How We Use Cookies</h3>
+                            <p class="mb-4">We use cookies for several purposes:</p>
+                            <ul class="list-disc pl-6 mb-4 space-y-2">
+                                <li><strong>Essential Cookies:</strong> Required for the website to function properly
+                                </li>
+                                <li><strong>Performance Cookies:</strong> Help us understand how visitors interact with
+                                    our website</li>
+                                <li><strong>Functionality Cookies:</strong> Enable enhanced functionality and
+                                    personalization</li>
+                                <li><strong>Targeting Cookies:</strong> Used to deliver relevant advertisements</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Managing Cookies</h3>
+                            <p class="mb-4">You can control and/or delete cookies as you wish. You can delete all
+                                cookies that are already on your computer and you can set most browsers to prevent them
+                                from being placed.</p>
+                            <p>If you do this, however, you may have to manually adjust some preferences every time you
+                                visit a site and some services and functionalities may not work.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div id="disclaimer" class="legal-section bg-white rounded-xl shadow-md p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-3xl font-bold text-gray-800">Disclaimer</h2>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Version
+                            3.2</span>
+                    </div>
+
+                    <div class="prose max-w-none">
+                        <p class="text-gray-600 mb-6">Last updated: September 15, 2023</p>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Financial Disclaimer</h3>
+                            <p class="mb-4">The information provided on our platform is for general informational
+                                purposes only and should not be considered as financial advice.</p>
+                            <p>All investments involve risk, and past performance is no guarantee of future results. The
+                                value of investments may fluctuate, and investors may not get back the amount invested.
+                            </p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">No Warranty</h3>
+                            <p class="mb-4">The Services are provided on an "AS IS" and "AS AVAILABLE" basis. INNOVEST
+                                PACIFIC TRUST makes no representations or warranties of any kind, express or implied, as
+                                to the operation of the Services or the information, content, or materials included
+                                therein.</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Limitation of Liability</h3>
+                            <p class="mb-4">To the fullest extent permitted by applicable law, SmartLuca Trust
+                                will not be liable for any loss or damage arising out of or in connection with your use
+                                of the Services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top bg-blue-600 text-white p-3 rounded-full shadow-lg btn-hover">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white mt-16 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">SmartLuca Trust</h3>
+                    <p class="text-sm text-blue-200">Providing premium wealth management and trust services since 1987.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+
+                    <p class="text-sm text-blue-200 mt-2"><i class="fas fa-envelope mr-2"></i> info@smartlucatrust.com
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./privacy/privacy.html" class="text-sm text-blue-200 hover:text-white">Terms of
+                                Service & Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-6 text-sm text-blue-300 text-center">
+                <p>© 2025 SmartLuca Trust. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Legal Section Navigation
+            const navItems = document.querySelectorAll('.legal-nav-item');
+            const legalSections = document.querySelectorAll('.legal-section');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const targetSection = this.getAttribute('data-section');
+
+                    // Update active nav item
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Show target section
+                    legalSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetSection) {
+                            section.classList.add('active');
+                        }
+                    });
+
+                    // Scroll to top of content
+                    document.querySelector('.lg\\:w-3\\/4').scrollTop = 0;
+                });
+            });
+
+            // Back to Top Functionality
+            const backToTop = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    backToTop.style.display = 'block';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            });
+
+            backToTop.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Print functionality
+            const printButtons = document.querySelectorAll('.print-btn');
+            printButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    window.print();
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

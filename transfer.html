@@ -163,16 +163,16 @@
                 <img src="/assets/logo_2.png" alt="" class="w-15 h-12 object-contain rounded-full">
                 <h1 class="text-xl font-bold ml-3">SmartLuca Trust</h1>
             </div>
-
-
-
             <div class="flex items-center space-x-4">
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="#" data-page="dashboard" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                    <a href="./dashboard.html" data-page="dashboard" class="nav-item px-3 py-2 rounded-lg page-link"><i
                             class="fas fa-home mr-2"></i>Dashboard</a>
 
                     <a href="./support.html" data-page="support" class="nav-item px-3 py-2 rounded-lg page-link"><i
                             class="fas fa-headset mr-2"></i>Support</a>
+
+                    <a href="./profile.html" class="nav-item px-3 py-2 rounded-lg "><i
+                            class="fas fa-user mr-2"></i>Profile</a>
                 </div>
 
             </div>
@@ -549,56 +549,72 @@
             </div>
         </div>
 
-        <!-- Footer -->
-        <footer class="bg-blue-900 text-white mt-16 py-8">
-            <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">SmartLuca Trust</h3>
-                        <p class="text-sm text-blue-200">Providing premium wealth management and trust services since
-                            1987.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+    </main>
 
-                        <p class="text-sm text-blue-200 mt-2"><i class="fas fa-envelope mr-2"></i>
-                            info@smartlucatrust.com
-                        </p>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-sm text-blue-200 hover:text-white">Privacy Policy</a></li>
-                            <li><a href="#" class="text-sm text-blue-200 hover:text-white">Terms of Service</a></li>
-                            <li><a href="#" class="text-sm text-blue-200 hover:text-white">Security</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white mt-16 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">SmartLuca Trust</h3>
+                    <p class="text-sm text-blue-200">Providing premium wealth management and trust services since 1987.
+                    </p>
                 </div>
-                <div class="border-t border-blue-800 mt-8 pt-6 text-sm text-blue-300 text-center">
-                    <p>© 2025 SmartLuca Trust. All rights reserved.</p>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+
+                    <p class="text-sm text-blue-200 mt-2"><i class="fas fa-envelope mr-2"></i> info@smartlucatrust.com
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./privacy/privacy.html" class="text-sm text-blue-200 hover:text-white">Terms of
+                                Service & Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </footer>
+            <div class="border-t border-blue-800 mt-8 pt-6 text-sm text-blue-300 text-center">
+                <p>© 2025 SmartLuca Trust. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    </main>
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg md:hidden flex justify-around items-center py-3 z-10">
+        <a href="./dashboard.html" data-page="dashboard" class="page-link flex flex-col items-center text-blue-600">
+            <i class="fas fa-home"></i>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+
+        <a href="./support.html" data-page="support" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-headset"></i>
+            <span class="text-xs mt-1">Support</span>
+        </a>
+        <a href="./profile.html" data-page="profile" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-user"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </div>
+
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 

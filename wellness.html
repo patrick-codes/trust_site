@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLuca Trust - Wellness Programs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6eef7 100%);
+            min-height: 100vh;
+        }
+
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .wellness-progress {
+            transition: width 2s ease-in-out;
+        }
+
+        .challenge-card {
+            transition: all 0.3s ease;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/assets/logo_2.png" alt="" class="w-15 h-12 object-contain rounded-full">
+                <h2 class="text-xl  ml-3">SmartLuca Trust</h1>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="./dashboard.html" data-page="dashboard" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                            class="fas fa-home mr-2"></i>Dashboard</a>
+                    <a href="./support.html" data-page="support" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                            class="fas fa-headset mr-2"></i>Support</a>
+                    <a href="./profile.html" class="nav-item px-3 py-2 rounded-lg "><i
+                            class="fas fa-user mr-2"></i>Profile</a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Wellness Programs Page -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Wellness Programs</h2>
+            <p class="text-blue-900 font-semibold">Your health and wellbeing matter to us</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-heartbeat text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Health Assessment</h3>
+                <p class="text-gray-600 mb-4">Complete your annual health assessment to unlock benefits</p>
+                <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+                    <div class="wellness-progress bg-green-500 h-2 rounded-full" style="width: 75%"></div>
+                </div>
+                <p class="text-sm text-gray-500 mb-4">75% completed</p>
+                <button class="w-full bg-green-600 text-white px-4 py-2 rounded-lg font-semibold btn-hover"
+                    id="healthAssessment">
+                    Continue Assessment
+                </button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-dumbbell text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Fitness Rewards</h3>
+                <p class="text-gray-600 mb-4">Earn rewards for staying active and healthy</p>
+                <div class="flex items-center mb-4">
+                    <div class="text-2xl font-bold text-blue-600 mr-2">1,250</div>
+                    <div class="text-sm text-gray-500">points earned</div>
+                </div>
+                <button class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold btn-hover"
+                    id="fitnessRewards">
+                    View Rewards
+                </button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-medkit text-purple-600 text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Mental Wellness</h3>
+                <p class="text-gray-600 mb-4">Access resources for mental health and stress management</p>
+                <div class="flex items-center mb-4">
+                    <div class="text-2xl font-bold text-purple-600 mr-2">8</div>
+                    <div class="text-sm text-gray-500">sessions completed</div>
+                </div>
+                <button class="w-full bg-purple-600 text-white px-4 py-2 rounded-lg font-semibold btn-hover"
+                    id="mentalWellness">
+                    Explore Resources
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <h3 class="text-lg font-semibold mb-4">Wellness Challenges</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="challenge-card border border-gray-200 rounded-lg p-4 text-center">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-walking text-red-600"></i>
+                    </div>
+                    <h4 class="font-medium mb-1">10K Steps Daily</h4>
+                    <p class="text-sm text-gray-500 mb-3">Walk 10,000 steps every day</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-red-500 h-2 rounded-full" style="width: 60%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">6/10 days completed</p>
+                    <button
+                        class="w-full mt-3 bg-red-100 text-red-600 px-3 py-1 rounded-lg text-sm font-semibold btn-hover log-activity"
+                        data-challenge="steps">
+                        Log Activity
+                    </button>
+                </div>
+
+                <div class="challenge-card border border-gray-200 rounded-lg p-4 text-center">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-apple-alt text-yellow-600"></i>
+                    </div>
+                    <h4 class="font-medium mb-1">Healthy Eating</h4>
+                    <p class="text-sm text-gray-500 mb-3">5 servings of fruits/veggies</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">8/10 days completed</p>
+                    <button
+                        class="w-full mt-3 bg-yellow-100 text-yellow-600 px-3 py-1 rounded-lg text-sm font-semibold btn-hover log-activity"
+                        data-challenge="nutrition">
+                        Log Activity
+                    </button>
+                </div>
+
+                <div class="challenge-card border border-gray-200 rounded-lg p-4 text-center">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-bed text-green-600"></i>
+                    </div>
+                    <h4 class="font-medium mb-1">Sleep Well</h4>
+                    <p class="text-sm text-gray-500 mb-3">7+ hours of sleep nightly</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 40%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">4/10 days completed</p>
+                    <button
+                        class="w-full mt-3 bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm font-semibold btn-hover log-activity"
+                        data-challenge="sleep">
+                        Log Activity
+                    </button>
+                </div>
+
+                <div class="challenge-card border border-gray-200 rounded-lg p-4 text-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-brain text-blue-600"></i>
+                    </div>
+                    <h4 class="font-medium mb-1">Mindfulness</h4>
+                    <p class="text-sm text-gray-500 mb-3">10 minutes of meditation</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-500 h-2 rounded-full" style="width: 70%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">7/10 days completed</p>
+                    <button
+                        class="w-full mt-3 bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm font-semibold btn-hover log-activity"
+                        data-challenge="mindfulness">
+                        Log Activity
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Wellness Resources</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-medium mb-2">Nutrition Guide</h4>
+                    <p class="text-gray-600 mb-4">Healthy eating tips and recipes for busy professionals</p>
+                    <button
+                        class="bg-green-100 text-green-600 px-4 py-2 rounded-lg font-semibold btn-hover wellness-resource"
+                        data-resource="nutrition">
+                        Access Guide
+                    </button>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-medium mb-2">Fitness Plans</h4>
+                    <p class="text-gray-600 mb-4">Custom workout routines for all fitness levels</p>
+                    <button
+                        class="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg font-semibold btn-hover wellness-resource"
+                        data-resource="fitness">
+                        View Plans
+                    </button>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-medium mb-2">Stress Management</h4>
+                    <p class="text-gray-600 mb-4">Techniques to reduce stress and improve mental health</p>
+                    <button
+                        class="bg-purple-100 text-purple-600 px-4 py-2 rounded-lg font-semibold btn-hover wellness-resource"
+                        data-resource="stress">
+                        Learn More
+                    </button>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-medium mb-2">Financial Wellness</h4>
+                    <p class="text-gray-600 mb-4">Resources for financial planning and peace of mind</p>
+                    <button
+                        class="bg-yellow-100 text-yellow-600 px-4 py-2 rounded-lg font-semibold btn-hover wellness-resource"
+                        data-resource="financial">
+                        Explore Resources
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Activity Log Modal -->
+    <div id="activityModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl shadow-lg p-6 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2" id="modalTitle">Log Activity</h3>
+                <p class="text-gray-600" id="modalDescription">Log your activity for today</p>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2" id="activityLabel">Activity Details</label>
+                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md" id="activityInput"
+                    placeholder="Enter details">
+            </div>
+
+            <div class="flex space-x-4">
+                <button id="cancelActivity"
+                    class="flex-1 bg-gray-200 text-gray-800 px-4 py-3 rounded-lg font-semibold btn-hover">
+                    Cancel
+                </button>
+                <button id="confirmActivity"
+                    class="flex-1 bg-green-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover">
+                    Log Activity
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white mt-16 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">SmartLuca Trust</h3>
+                    <p class="text-sm text-blue-200">Providing premium wealth management and trust services since 1987.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+
+                    <p class="text-sm text-blue-200 mt-2"><i class="fas fa-envelope mr-2"></i> info@smartlucatrust.com
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./privacy/privacy.html" class="text-sm text-blue-200 hover:text-white">Terms of
+                                Service & Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-6 text-sm text-blue-300 text-center">
+                <p>© 2025 SmartLuca Trust. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg md:hidden flex justify-around items-center py-3 z-10">
+        <a href="#" data-page="dashboard" class="page-link flex flex-col items-center text-blue-600">
+            <i class="fas fa-home"></i>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+
+        <a href="./support.html" data-page="support" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-headset"></i>
+            <span class="text-xs mt-1">Support</span>
+        </a>
+        <a href="./profile.html" data-page="profile" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-user"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Wellness Progress Animation
+            const wellnessProgress = document.querySelectorAll('.wellness-progress');
+            wellnessProgress.forEach(progress => {
+                // Animate on page load
+                setTimeout(() => {
+                    progress.style.width = progress.style.width;
+                }, 500);
+            });
+
+            // Main Wellness Program Buttons
+            const healthAssessment = document.getElementById('healthAssessment');
+            const fitnessRewards = document.getElementById('fitnessRewards');
+            const mentalWellness = document.getElementById('mentalWellness');
+
+            healthAssessment.addEventListener('click', function () {
+                alert('Redirecting to Health Assessment...');
+            });
+
+            fitnessRewards.addEventListener('click', function () {
+                alert('Opening Fitness Rewards Dashboard...');
+            });
+
+            mentalWellness.addEventListener('click', function () {
+                alert('Loading Mental Wellness Resources...');
+            });
+
+            // Activity Logging Functionality
+            const activityModal = document.getElementById('activityModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const activityLabel = document.getElementById('activityLabel');
+            const activityInput = document.getElementById('activityInput');
+            const cancelActivity = document.getElementById('cancelActivity');
+            const confirmActivity = document.getElementById('confirmActivity');
+            const logActivityButtons = document.querySelectorAll('.log-activity');
+
+            logActivityButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const challenge = this.getAttribute('data-challenge');
+                    let title, description, label, placeholder;
+
+                    switch (challenge) {
+                        case 'steps':
+                            title = 'Log Steps';
+                            description = 'Enter your step count for today';
+                            label = 'Step Count';
+                            placeholder = 'e.g., 10,500 steps';
+                            break;
+                        case 'nutrition':
+                            title = 'Log Nutrition';
+                            description = 'Record your fruit and vegetable servings';
+                            label = 'Servings Today';
+                            placeholder = 'e.g., 5 servings';
+                            break;
+                        case 'sleep':
+                            title = 'Log Sleep';
+                            description = 'Record your sleep duration last night';
+                            label = 'Sleep Duration';
+                            placeholder = 'e.g., 7.5 hours';
+                            break;
+                        case 'mindfulness':
+                            title = 'Log Mindfulness';
+                            description = 'Record your meditation or mindfulness practice';
+                            label = 'Practice Duration';
+                            placeholder = 'e.g., 15 minutes';
+                            break;
+                    }
+
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = description;
+                    activityLabel.textContent = label;
+                    activityInput.placeholder = placeholder;
+                    activityInput.value = '';
+
+                    activityModal.classList.remove('hidden');
+                });
+            });
+
+            cancelActivity.addEventListener('click', function () {
+                activityModal.classList.add('hidden');
+            });
+
+            confirmActivity.addEventListener('click', function () {
+                const activity = activityInput.value;
+                if (!activity) {
+                    alert('Please enter your activity details');
+                    return;
+                }
+
+                alert('Activity logged successfully! Keep up the great work!');
+                activityModal.classList.add('hidden');
+            });
+
+            // Close modal when clicking outside
+            activityModal.addEventListener('click', function (e) {
+                if (e.target === activityModal) {
+                    activityModal.classList.add('hidden');
+                }
+            });
+
+            // Wellness Resources
+            const wellnessResources = document.querySelectorAll('.wellness-resource');
+            wellnessResources.forEach(button => {
+                button.addEventListener('click', function () {
+                    const resource = this.getAttribute('data-resource');
+                    let message;
+
+                    switch (resource) {
+                        case 'nutrition':
+                            message = 'Opening Nutrition Guide...';
+                            break;
+                        case 'fitness':
+                            message = 'Loading Fitness Plans...';
+                            break;
+                        case 'stress':
+                            message = 'Accessing Stress Management Resources...';
+                            break;
+                        case 'financial':
+                            message = 'Opening Financial Wellness Tools...';
+                            break;
+                    }
+
+                    alert(message);
+                });
+            });
+
+            // Button Interactivity
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    this.classList.add('transform', 'scale-95');
+                    setTimeout(() => {
+                        this.classList.remove('transform', 'scale-95');
+                    }, 100);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

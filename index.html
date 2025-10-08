@@ -12,8 +12,16 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f0f4f8 0%, #e6eef7 100%);
             min-height: 100vh;
+
+            /* Background image with stronger overlay */
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.932), rgb(255, 255, 255)),
+                url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1920&q=80');
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .card-gradient {
@@ -45,12 +53,43 @@
             border: 2px solid #cbd5e0;
             border-radius: 8px;
             margin: 0 5px;
+            transition: all 0.2s ease;
         }
 
         .otp-input:focus {
             border-color: #3b82f6;
             outline: none;
         }
+
+        /* Mobile adjustments */
+        @media (max-width: 640px) {
+            .otp-input {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+                margin: 0 3px;
+            }
+
+            #otpScreen .bg-white {
+                padding: 1.25rem;
+                /* reduce from p-8 */
+            }
+
+            #otpScreen h2 {
+                font-size: 1rem;
+                /* shrink heading */
+            }
+
+            #otpScreen p {
+                font-size: 0.85rem;
+            }
+
+            #otpScreen .w-16.h-16 {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
 
         .countdown {
             font-size: 1.2rem;
@@ -79,15 +118,15 @@
             <div class="bg-white rounded-xl shadow-md p-8 w-full">
                 <div class="text-center mb-8">
                     <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-lock text-blue-600 text-2xl"></i>
+                        <i class="fas fa-lock text-blue-600 text-xl"></i>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Welcome Back</h2>
+                    <h2 class="text-xl font-small text-gray-800">Welcome Back</h2>
                     <p class="text-gray-600">Sign in to your account</p>
                 </div>
 
                 <form id="loginForm">
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                        <label class="block text-sm font-small text-gray-700 mb-2">Email Address</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-envelope text-gray-400"></i>
@@ -99,7 +138,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                        <label class="block text-sm font-small text-gray-700 mb-2">Password</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-lock text-gray-400"></i>
@@ -120,7 +159,7 @@
 
                     <div class="mb-6">
                         <button type="submit" id="loginBtn"
-                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover flex items-center justify-center">
+                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-small btn-hover flex items-center justify-center">
                             <span id="loginBtnText">Sign In</span>
                             <svg id="loginSpinner" class="animate-spin ml-2 h-5 w-5 text-white hidden"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -135,7 +174,7 @@
 
                     <div class="text-center">
                         <p class="text-gray-600">Don't have an account? <a href="#" id="showSignup"
-                                class="text-blue-600 hover:underline font-medium">Sign Up</a></p>
+                                class="text-blue-600 hover:underline font-small">Sign Up</a></p>
                     </div>
                 </form>
             </div>
@@ -146,16 +185,16 @@
             <div class="bg-white rounded-xl shadow-md p-8 w-full">
                 <div class="text-center mb-8">
                     <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user-plus text-blue-600 text-2xl"></i>
+                        <i class="fas fa-user-plus text-blue-600 text-xl"></i>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Create Account</h2>
+                    <h2 class="text-xl font-small text-gray-800">Create Account</h2>
                     <p class="text-gray-600">Join SmartLuca Trust today</p>
                 </div>
 
                 <form id="signupForm">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                            <label class="block text-sm font-small text-gray-700 mb-2">First Name</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <i class="fas fa-user text-gray-400"></i>
@@ -166,7 +205,7 @@
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                            <label class="block text-sm font-small text-gray-700 mb-2">Last Name</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <i class="fas fa-user text-gray-400"></i>
@@ -179,7 +218,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                        <label class="block text-sm font-small text-gray-700 mb-2">Email Address</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-envelope text-gray-400"></i>
@@ -191,7 +230,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <label class="block text-sm font-small text-gray-700 mb-2">Phone Number</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-phone text-gray-400"></i>
@@ -203,7 +242,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                        <label class="block text-sm font-small text-gray-700 mb-2">Password</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-lock text-gray-400"></i>
@@ -219,7 +258,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                        <label class="block text-sm font-small text-gray-700 mb-2">Confirm Password</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-lock text-gray-400"></i>
@@ -235,15 +274,17 @@
                             <input type="checkbox" id="terms"
                                 class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                             <label for="terms" class="ml-2 block text-sm text-gray-700">
-                                I agree to the <a href="#" class="text-blue-600 hover:underline">Terms of Service</a>
-                                and <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>
+                                I agree to the <a href="./privacy/privacy.html"
+                                    class="text-blue-600 hover:underline">Terms of Service</a>
+                                and <a href="./privacy/privacy.html" class="text-blue-600 hover:underline">Privacy
+                                    Policy</a>
                             </label>
                         </div>
                     </div>
 
                     <div class="mb-6">
                         <button type="submit" id="signupBtn"
-                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover flex justify-center items-center">
+                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-small btn-hover flex justify-center items-center">
                             <span id="signupBtnText">Create Account</span>
                             <svg id="signupSpinner" class="animate-spin h-5 w-5 ml-2 text-white hidden"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -257,8 +298,8 @@
                     </div>
 
                     <div class="text-center">
-                        <p class="text-gray-600">Already have an account? <a href="#" id="showLogin"
-                                class="text-blue-600 hover:underline font-medium">Sign In</a></p>
+                        <p class="text-gray-600">Already registered? <a href="#" id="showLogin"
+                                class="text-blue-600 hover:underline font">Sign In</a></p>
                     </div>
                 </form>
             </div>
@@ -269,9 +310,9 @@
             <div class="bg-white rounded-xl shadow-md p-8 w-full">
                 <div class="text-center mb-8">
                     <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-mobile-alt text-blue-600 text-2xl"></i>
+                        <i class="fas fa-mobile-alt text-blue-600 text-xl"></i>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Verify Your Account</h2>
+                    <h2 class="text-xl font-bold text-gray-800">Verify Your Account</h2>
                     <p class="text-gray-600">Enter the verification code sent to your email</p>
                 </div>
 
@@ -289,14 +330,14 @@
 
                     <div class="mb-6 text-center">
                         <p class="text-gray-600">Didn't receive the code? <a href="#" id="resendOtp"
-                                class="text-blue-600 hover:underline font-medium">Resend</a></p>
+                                class="text-blue-600 hover:underline font-small">Resend</a></p>
                         <p class="text-gray-500 text-sm mt-2">Resend code in <span id="countdown"
                                 class="countdown text-blue-600">60</span> seconds</p>
                     </div>
 
                     <div class="mb-6">
                         <button type="submit" id="otpBtn"
-                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover flex justify-center items-center">
+                            class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-small btn-hover flex justify-center items-center">
                             <span id="otpBtnText">Verify & Continue</span>
                             <svg id="otpSpinner" class="animate-spin h-5 w-5 ml-2 text-white hidden"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -310,13 +351,15 @@
                     </div>
 
                     <div class="text-center">
-                        <a href="#" id="changePhoneNumber" class="text-blue-600 hover:underline font-medium">Change
+                        <a href="#" id="changePhoneNumber" class="text-blue-600 hover:underline font-small">Change
                             Email</a>
                     </div>
                 </form>
             </div>
         </div>
     </main>
+
+
 
     <script>
 
@@ -557,8 +600,11 @@
                     console.log("OTP response:", data);
 
                     if (res.ok && data.success) {
+
+                        // Store token
+
                         alert("Account verified successfully!");
-                        localStorage.setItem("authToken", data.data.token);
+                        localStorage.setItem("token", data.data.token);
                         window.location.href = "dashboard.html";
                     } else {
                         alert(data.message || "OTP verification failed.");

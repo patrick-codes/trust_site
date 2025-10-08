@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLuca Trust - Loans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6eef7 100%);
+            min-height: 100vh;
+        }
+
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-badge {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .status-badge:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .status-active:before {
+            background-color: #10B981;
+        }
+
+        .loan-progress {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/assets/logo_2.png" alt="" class="w-15 h-12 object-contain rounded-full">
+                <h2 class="text-xl  ml-3">SmartLuca Trust</h1>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="./dashboard.html" data-page="dashboard" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                            class="fas fa-home mr-2"></i>Dashboard</a>
+                    <a href="./support.html" data-page="support" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                            class="fas fa-headset mr-2"></i>Support</a>
+                    <a href="./profile.html" class="nav-item px-3 py-2 rounded-lg"><i
+                            class="fas fa-user mr-2"></i>Profile</a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Loans Page -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Loans & Financing</h2>
+            <p class="text-blue-900 font-semibold">Manage your loans and apply for new financing</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-lg font-semibold mb-4">Active Loans</h3>
+
+                <div class="border border-gray-200 rounded-lg p-4 mb-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="font-medium">Real Estate Mortgage</h4>
+                            <p class="text-sm text-gray-500">Loan #7829-4291</p>
+                        </div>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Current</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <p class="text-sm text-gray-500">Original Amount</p>
+                            <p class="font-semibold">$5,000,000</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Current Balance</p>
+                            <p class="font-semibold">$3,245,780</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                        <div class="loan-progress bg-blue-600 h-2 rounded-full" style="width: 65%"></div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm text-gray-500">Interest Rate</p>
+                            <p class="font-semibold">3.25%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Monthly Payment</p>
+                            <p class="font-semibold">$21,703</p>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full mt-4 bg-blue-100 text-blue-600 px-4 py-2 rounded-lg font-semibold btn-hover make-payment">
+                        Make Payment
+                    </button>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="font-medium">Luxury Yacht Financing</h4>
+                            <p class="text-sm text-gray-500">Loan #6652-3387</p>
+                        </div>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Current</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <p class="text-sm text-gray-500">Original Amount</p>
+                            <p class="font-semibold">$2,500,000</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Current Balance</p>
+                            <p class="font-semibold">$1,876,430</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                        <div class="loan-progress bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm text-gray-500">Interest Rate</p>
+                            <p class="font-semibold">4.15%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Monthly Payment</p>
+                            <p class="font-semibold">$12,845</p>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full mt-4 bg-blue-100 text-blue-600 px-4 py-2 rounded-lg font-semibold btn-hover make-payment">
+                        Make Payment
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-lg font-semibold mb-4">Apply for a New Loan</h3>
+                <p class="text-gray-600 mb-4">Quick approval process for premium clients</p>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Loan Type</label>
+                        <select class="w-full px-3 py-2 border border-gray-300 rounded-md" id="loanType">
+                            <option>Select Loan Type</option>
+                            <option>Mortgage</option>
+                            <option>Yacht Financing</option>
+                            <option>Private Jet</option>
+                            <option>Luxury Auto</option>
+                            <option>Personal Line of Credit</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Loan Amount</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="text-gray-500">$</span>
+                            </div>
+                            <input type="text" class="pl-7 w-full px-3 py-2 border border-gray-300 rounded-md"
+                                placeholder="Enter amount" id="loanAmount">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Loan Purpose</label>
+                        <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md" rows="2"
+                            placeholder="Brief description of loan purpose" id="loanPurpose"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Term Length</label>
+                        <select class="w-full px-3 py-2 border border-gray-300 rounded-md" id="loanTerm">
+                            <option>5 years</option>
+                            <option>10 years</option>
+                            <option>15 years</option>
+                            <option>20 years</option>
+                            <option>30 years</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-blue-50 p-4 rounded-lg hidden" id="loanEstimate">
+                        <h4 class="font-medium mb-2">Loan Estimate</h4>
+                        <div class="flex justify-between">
+                            <span>Monthly Payment:</span>
+                            <span class="font-semibold" id="monthlyPayment">-</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Interest Rate:</span>
+                            <span class="font-semibold" id="interestRate">-</span>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-green-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover"
+                        id="applyLoan">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Loan Payment History</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Loan</th>
+                            <th class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Date</th>
+                            <th class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Amount</th>
+                            <th class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Method</th>
+                            <th class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="py-4 px-6">
+                                <div>
+                                    <p class="font-medium">Real Estate Mortgage</p>
+                                    <p class="text-sm text-gray-500">Loan #7829-4291</p>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">Aug 1, 2023</td>
+                            <td class="py-4 px-6">
+                                <p class="text-red-600 font-semibold">-$21,703.00</p>
+                            </td>
+                            <td class="py-4 px-6">Auto Pay</td>
+                            <td class="py-4 px-6">
+                                <span class="status-badge status-active">Completed</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6">
+                                <div>
+                                    <p class="font-medium">Luxury Yacht Financing</p>
+                                    <p class="text-sm text-gray-500">Loan #6652-3387</p>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">Aug 1, 2023</td>
+                            <td class="py-4 px-6">
+                                <p class="text-red-600 font-semibold">-$12,845.00</p>
+                            </td>
+                            <td class="py-4 px-6">Auto Pay</td>
+                            <td class="py-4 px-6">
+                                <span class="status-badge status-active">Completed</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl shadow-lg p-6 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-credit-card text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Make Payment</h3>
+                <p class="text-gray-600" id="paymentDescription">Payment for Loan #</p>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Payment Amount</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="text-gray-500">$</span>
+                    </div>
+                    <input type="text" class="pl-7 w-full px-3 py-2 border border-gray-300 rounded-md"
+                        id="paymentAmount">
+                </div>
+            </div>
+
+            <div class="flex space-x-4">
+                <button id="cancelPayment"
+                    class="flex-1 bg-gray-200 text-gray-800 px-4 py-3 rounded-lg font-semibold btn-hover">
+                    Cancel
+                </button>
+                <button id="confirmPayment"
+                    class="flex-1 bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover">
+                    Confirm Payment
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white mt-16 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">SmartLuca Trust</h3>
+                    <p class="text-sm text-blue-200">Providing premium wealth management and trust services since 1987.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+
+                    <p class="text-sm text-blue-200 mt-2"><i class="fas fa-envelope mr-2"></i> info@smartlucatrust.com
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./privacy/privacy.html" class="text-sm text-blue-200 hover:text-white">Terms of
+                                Service & Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-6 text-sm text-blue-300 text-center">
+                <p>© 2025 SmartLuca Trust. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg md:hidden flex justify-around items-center py-3 z-10">
+        <a href="#" data-page="dashboard" class="page-link flex flex-col items-center text-blue-600">
+            <i class="fas fa-home"></i>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+
+        <a href="./support.html" data-page="support" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-headset"></i>
+            <span class="text-xs mt-1">Support</span>
+        </a>
+        <a href="./profile.html" data-page="profile" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-user"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Loan Calculator Functionality
+            const loanType = document.getElementById('loanType');
+            const loanAmount = document.getElementById('loanAmount');
+            const loanTerm = document.getElementById('loanTerm');
+            const loanEstimate = document.getElementById('loanEstimate');
+            const monthlyPayment = document.getElementById('monthlyPayment');
+            const interestRate = document.getElementById('interestRate');
+
+            const calculateLoan = () => {
+                if (loanType.value !== 'Select Loan Type' && loanAmount.value) {
+                    const amount = parseFloat(loanAmount.value.replace(/[^0-9.]/g, ''));
+                    const term = parseInt(loanTerm.value);
+
+                    // Simple loan calculation
+                    let rate = 0;
+                    switch (loanType.value) {
+                        case 'Mortgage': rate = 3.25; break;
+                        case 'Yacht Financing': rate = 4.15; break;
+                        case 'Private Jet': rate = 5.75; break;
+                        case 'Luxury Auto': rate = 3.9; break;
+                        case 'Personal Line of Credit': rate = 7.2; break;
+                    }
+
+                    const monthlyRate = rate / 100 / 12;
+                    const payments = term * 12;
+                    const payment = amount * monthlyRate * Math.pow(1 + monthlyRate, payments) / (Math.pow(1 + monthlyRate, payments) - 1);
+
+                    monthlyPayment.textContent = '$' + payment.toFixed(2);
+                    interestRate.textContent = rate + '%';
+                    loanEstimate.classList.remove('hidden');
+                } else {
+                    loanEstimate.classList.add('hidden');
+                }
+            };
+
+            loanType.addEventListener('change', calculateLoan);
+            loanAmount.addEventListener('input', calculateLoan);
+            loanTerm.addEventListener('change', calculateLoan);
+
+            // Loan Application
+            const applyLoan = document.getElementById('applyLoan');
+            applyLoan.addEventListener('click', function () {
+                if (loanType.value === 'Select Loan Type') {
+                    alert('Please select a loan type');
+                    return;
+                }
+
+                if (!loanAmount.value) {
+                    alert('Please enter a loan amount');
+                    return;
+                }
+
+                alert('Loan application submitted! Our team will contact you within 24 hours.');
+
+                // Reset form
+                loanType.value = 'Select Loan Type';
+                loanAmount.value = '';
+                loanTerm.value = '5 years';
+                loanEstimate.classList.add('hidden');
+            });
+
+            // Payment Modal Functionality
+            const paymentModal = document.getElementById('paymentModal');
+            const paymentDescription = document.getElementById('paymentDescription');
+            const paymentAmount = document.getElementById('paymentAmount');
+            const cancelPayment = document.getElementById('cancelPayment');
+            const confirmPayment = document.getElementById('confirmPayment');
+            const makePaymentButtons = document.querySelectorAll('.make-payment');
+
+            makePaymentButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const loanName = this.closest('.border').querySelector('h4').textContent;
+                    const loanNumber = this.closest('.border').querySelector('.text-sm').textContent;
+                    const monthlyPmt = this.closest('.border').querySelectorAll('.font-semibold')[1].textContent;
+
+                    paymentDescription.textContent = `Payment for ${loanName} (${loanNumber})`;
+                    paymentAmount.value = monthlyPmt;
+                    paymentModal.classList.remove('hidden');
+                });
+            });
+
+            cancelPayment.addEventListener('click', function () {
+                paymentModal.classList.add('hidden');
+            });
+
+            confirmPayment.addEventListener('click', function () {
+                const amount = paymentAmount.value;
+                alert(`Payment of ${amount} processed successfully!`);
+                paymentModal.classList.add('hidden');
+            });
+
+            // Close modal when clicking outside
+            paymentModal.addEventListener('click', function (e) {
+                if (e.target === paymentModal) {
+                    paymentModal.classList.add('hidden');
+                }
+            });
+
+            // Button Interactivity
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    this.classList.add('transform', 'scale-95');
+                    setTimeout(() => {
+                        this.classList.remove('transform', 'scale-95');
+                    }, 100);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

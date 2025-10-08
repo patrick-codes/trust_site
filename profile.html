@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - INNOVEST PACIFIC TRUST</title>
+    <title>SmartLuca Trust - Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -67,19 +67,14 @@
 
             <div class="flex items-center space-x-4">
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="#" data-page="dashboard" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                    <a href="./dashboard.html" data-page="dashboard" class="nav-item px-3 py-2 rounded-lg page-link"><i
                             class="fas fa-home mr-2"></i>Dashboard</a>
                     <a href="./support.html" data-page="support" class="nav-item px-3 py-2 rounded-lg page-link"><i
                             class="fas fa-headset mr-2"></i>Support</a>
                     <a href="#" class="nav-item px-3 py-2 rounded-lg bg-blue-800"><i
                             class="fas fa-user mr-2"></i>Profile</a>
                 </div>
-                <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <span class="ml-2"></span>
-                </div>
+
             </div>
         </div>
     </header>
@@ -87,8 +82,8 @@
     <!-- Profile Page -->
     <main class="container mx-auto px-4 py-8">
         <div class="mb-6">
-            <h2 class="text-2xl font-bold text-gray-800">Profile Settings</h2>
-            <p class="text-blue-900 font-semibold">Manage your account information and preferences</p>
+            <h2 class="text-1xl font-bold text-gray-800">Profile Settings</h2>
+            <p class="text-blue-900 font">Manage your account information and preferences</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -99,7 +94,8 @@
                         <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-user text-blue-600 text-3xl"></i>
                         </div>
-                        <h3 id="profileName" class="text-xl font-bold"></h3>
+                        <h4 id="profileName" class="text-xl font-small">
+                        </h4>
 
                         <p class="text-gray-600">Premium Client</p>
                         <div class="mt-2 bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full inline-block">
@@ -108,19 +104,18 @@
                     </div>
 
                     <div class="space-y-2">
-                        <button class="tab-button w-full text-left px-4 py-3 rounded-lg font-medium active"
+                        <button class="tab-button w-full text-left px-4 py-3 rounded-lg font-small active"
                             data-tab="personal">
                             <i class="fas fa-user-circle mr-3"></i> Personal Information
                         </button>
-                        <button class="tab-button w-full text-left px-4 py-3 rounded-lg font-medium"
-                            data-tab="security">
+                        <button class="tab-button w-full text-left px-4 py-3 rounded-lg font-small" data-tab="security">
                             <i class="fas fa-shield-alt mr-3"></i> Security Settings
                         </button>
-                        <button class="tab-button w-full text-left px-4 py-3 rounded-lg font-medium"
+                        <button class="tab-button w-full text-left px-4 py-3 rounded-lg font-small"
                             data-tab="notifications">
                             <i class="fas fa-bell mr-3"></i> Notifications
                         </button>
-                        <button class="tab-button w-full text-left px-4 py-3 rounded-lg font-medium"
+                        <button class="tab-button w-full text-left px-4 py-3 rounded-lg font-small"
                             data-tab="preferences">
                             <i class="fas fa-cog mr-3"></i> Preferences
                         </button>
@@ -128,7 +123,7 @@
 
                     <div class="mt-6 pt-6 border-t border-gray-200">
                         <button id="logoutBtn"
-                            class="w-full bg-red-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover flex items-center justify-center">
+                            class="w-full bg-red-600 text-white px-4 py-3 rounded-lg font-small btn-hover flex items-center justify-center">
                             <i class="fas fa-sign-out-alt mr-2"></i> Logout
                         </button>
                     </div>
@@ -136,15 +131,15 @@
 
                 <!-- Account Summary -->
                 <div class="bg-white rounded-xl shadow-md p-6">
-                    <h3 class="text-lg font-semibold mb-4">Account Summary</h3>
+                    <h3 class="text-lg font-small mb-4">Account Summary</h3>
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Account Status</span>
-                            <span class="font-medium text-green-600">Active</span>
+                            <span class="font-small text-green-600">Active</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Client Tier</span>
-                            <span class="font-medium text-blue-600">Premium</span>
+                            <span class="font-small text-blue-600">Premium</span>
                         </div>
                     </div>
                 </div>
@@ -155,17 +150,17 @@
                 <!-- Personal Information Tab -->
                 <div id="personal" class="profile-section active">
                     <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-                        <h3 class="text-lg font-semibold mb-4">Personal Information</h3>
+                        <h3 class="text-lg font-small mb-4">Personal Information</h3>
                         <form id="personalInfoForm">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                    <label class="block text-sm font-small text-gray-700 mb-2">First Name</label>
                                     <input type="text"
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                                         value="" required>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                    <label class="block text-sm font-small text-gray-700 mb-2">Last Name</label>
                                     <input type="text"
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                                         value="" required>
@@ -173,28 +168,28 @@
                             </div>
 
                             <div class="mb-6">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <label class="block text-sm font-small text-gray-700 mb-2">Email Address</label>
                                 <input type="email"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                                     value="" required>
                             </div>
 
                             <div class="mb-6">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                <label class="block text-sm font-small text-gray-700 mb-2">Phone Number</label>
                                 <input type="tel"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                                     value="" required>
                             </div>
 
                             <div class="mb-6">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Date of Birth</label>
+                                <label class="block text-sm font-small text-gray-700 mb-2">Date of Birth</label>
                                 <input type="date"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                                     value="" required>
                             </div>
 
                             <div class="mb-6">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                                <label class="block text-sm font-small text-gray-700 mb-2">Address</label>
                                 <textarea
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                                     rows="3"></textarea>
@@ -202,7 +197,7 @@
 
                             <div class="flex justify-end">
                                 <button type="submit"
-                                    class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold btn-hover">
+                                    class="bg-blue-600 text-white px-6 py-3 rounded-lg font-small btn-hover">
                                     Save Changes
                                 </button>
                             </div>
@@ -213,62 +208,9 @@
                 <!-- Security Settings Tab -->
                 <div id="security" class="profile-section">
                     <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-                        <h3 class="text-lg font-semibold mb-4">Security Settings</h3>
-
-                        <div class="mb-6">
-                            <h4 class="font-medium mb-3">Change Password</h4>
-                            <form id="changePasswordForm">
-                                <div class="mb-4">
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
-                                    <div class="relative">
-                                        <input type="password"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                                            required>
-                                        <button type="button"
-                                            class="absolute inset-y-0 right-0 pr-3 flex items-center toggle-password">
-                                            <i class="fas fa-eye text-gray-400"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="mb-4">
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">New Password</label>
-                                    <div class="relative">
-                                        <input type="password"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                                            required>
-                                        <button type="button"
-                                            class="absolute inset-y-0 right-0 pr-3 flex items-center toggle-password">
-                                            <i class="fas fa-eye text-gray-400"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="mb-6">
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Confirm New
-                                        Password</label>
-                                    <div class="relative">
-                                        <input type="password"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                                            required>
-                                        <button type="button"
-                                            class="absolute inset-y-0 right-0 pr-3 flex items-center toggle-password">
-                                            <i class="fas fa-eye text-gray-400"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="flex justify-end">
-                                    <button type="submit"
-                                        class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold btn-hover">
-                                        Update Password
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-
+                        <h3 class="text-lg font-small mb-4">Security Settings</h3>
                         <div class="border-t border-gray-200 pt-6">
-                            <h4 class="font-medium mb-3">Two-Factor Authentication</h4>
+                            <h4 class="font-small mb-3">Two-Factor Authentication</h4>
                             <div class="flex justify-between items-center">
                                 <div>
                                     <p class="text-gray-600">Add an extra layer of security to your account</p>
@@ -287,11 +229,11 @@
                 <!-- Notifications Tab -->
                 <div id="notifications" class="profile-section">
                     <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-                        <h3 class="text-lg font-semibold mb-4">Notification Preferences</h3>
+                        <h3 class="text-lg font-small mb-4">Notification Preferences</h3>
 
                         <div class="space-y-6">
                             <div>
-                                <h4 class="font-medium mb-3">Email Notifications</h4>
+                                <h4 class="font-small mb-3">Email Notifications</h4>
                                 <div class="space-y-3">
                                     <div class="flex justify-between items-center">
                                         <span>Account Activity</span>
@@ -323,53 +265,6 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <h4 class="font-medium mb-3">SMS Notifications</h4>
-                                <div class="space-y-3">
-                                    <div class="flex justify-between items-center">
-                                        <span>Transaction Alerts</span>
-                                        <div class="relative inline-block w-12 mr-2 align-middle select-none">
-                                            <input type="checkbox" checked
-                                                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-                                            <label
-                                                class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                        </div>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span>Security Codes</span>
-                                        <div class="relative inline-block w-12 mr-2 align-middle select-none">
-                                            <input type="checkbox" checked
-                                                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-                                            <label
-                                                class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h4 class="font-medium mb-3">Push Notifications</h4>
-                                <div class="space-y-3">
-                                    <div class="flex justify-between items-center">
-                                        <span>App Updates</span>
-                                        <div class="relative inline-block w-12 mr-2 align-middle select-none">
-                                            <input type="checkbox"
-                                                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-                                            <label
-                                                class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                        </div>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span>Market News</span>
-                                        <div class="relative inline-block w-12 mr-2 align-middle select-none">
-                                            <input type="checkbox" checked
-                                                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-                                            <label
-                                                class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -377,41 +272,19 @@
                 <!-- Preferences Tab -->
                 <div id="preferences" class="profile-section">
                     <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-                        <h3 class="text-lg font-semibold mb-4">Account Preferences</h3>
+                        <h3 class="text-lg font-small mb-4">Account Preferences</h3>
 
                         <div class="space-y-6">
                             <div>
-                                <h4 class="font-medium mb-3">Language & Region</h4>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Language</label>
-                                        <select
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>English</option>
-                                            <option>Spanish</option>
-                                            <option>French</option>
-                                            <option>German</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Timezone</label>
-                                        <select
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Eastern Time (ET)</option>
-                                            <option>Central Time (CT)</option>
-                                            <option>Mountain Time (MT)</option>
-                                            <option>Pacific Time (PT)</option>
-                                        </select>
-                                    </div>
-                                </div>
+
                             </div>
 
                             <div>
-                                <h4 class="font-medium mb-3">Privacy Settings</h4>
+                                <h4 class="font-small mb-3">Privacy Settings</h4>
                                 <div class="space-y-3">
                                     <div class="flex justify-between items-center">
                                         <div>
-                                            <p class="font-medium">Data Sharing</p>
+                                            <p class="font-small">Data Sharing</p>
                                             <p class="text-sm text-gray-600">Allow anonymized data for improving
                                                 services</p>
                                         </div>
@@ -424,7 +297,7 @@
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <div>
-                                            <p class="font-medium">Marketing Communications</p>
+                                            <p class="font-small">Marketing Communications</p>
                                             <p class="text-sm text-gray-600">Receive offers and promotions</p>
                                         </div>
                                         <div class="relative inline-block w-12 mr-2 align-middle select-none">
@@ -437,62 +310,129 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <h4 class="font-medium mb-3">Interface Preferences</h4>
-                                <div class="space-y-3">
-                                    <div class="flex justify-between items-center">
-                                        <span>Dark Mode</span>
-                                        <div class="relative inline-block w-12 mr-2 align-middle select-none">
-                                            <input type="checkbox"
-                                                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-                                            <label
-                                                class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                        </div>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span>Compact View</span>
-                                        <div class="relative inline-block w-12 mr-2 align-middle select-none">
-                                            <input type="checkbox"
-                                                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-                                            <label
-                                                class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-
     <!-- Logout Confirmation Modal -->
     <div id="logoutModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-xl shadow-lg p-6 max-w-md w-full mx-4">
-            <div class="text-center mb-6">
-                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-sign-out-alt text-red-600 text-2xl"></i>
+        <div class="bg-white rounded-lg shadow-md p-4 max-w-sm w-full mx-4">
+            <div class="text-center mb-4">
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-sign-out-alt text-red-600 text-lg"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Confirm Logout</h3>
-                <p class="text-gray-600">Are you sure you want to logout from your account?</p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-1">Confirm Logout</h3>
+                <p class="text-sm text-gray-600">Are you sure you want to logout?</p>
             </div>
 
-            <div class="flex space-x-4">
+            <div class="flex space-x-3">
                 <button id="cancelLogout"
-                    class="flex-1 bg-gray-200 text-gray-800 px-4 py-3 rounded-lg font-semibold btn-hover">
+                    class="flex-1 bg-gray-200 text-gray-800 px-3 py-2 rounded-md text-sm font-medium btn-hover">
                     Cancel
                 </button>
                 <button id="confirmLogout"
-                    class="flex-1 bg-red-600 text-white px-4 py-3 rounded-lg font-semibold btn-hover">
-                    Yes, Logout
+                    class="flex-1 bg-red-600 text-white px-3 py-2 rounded-md text-sm font-medium btn-hover">
+                    Logout
                 </button>
             </div>
         </div>
     </div>
 
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white mt-16 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">SmartLuca Trust</h3>
+                    <p class="text-sm text-blue-200">Providing premium wealth management and trust services since 1987.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+
+                    <p class="text-sm text-blue-200 mt-2"><i class="fas fa-envelope mr-2"></i> info@smartlucatrust.com
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./privacy/privacy.html" class="text-sm text-blue-200 hover:text-white">Terms of
+                                Service & Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-6 text-sm text-blue-300 text-center">
+                <p>© 2025 SmartLuca Trust. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg md:hidden flex justify-around items-center py-3 z-10">
+        <a href="./dashboard.html" data-page="dashboard" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-home"></i>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+
+        <a href="./support.html" data-page="support" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-headset"></i>
+            <span class="text-xs mt-1">Support</span>
+        </a>
+        <a href="./profile.html" data-page="profile" class="page-link flex flex-col items-center text-blue-600">
+            <i class="fas fa-user"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+
+            // Toggle Switch Styling + State Management
+            const toggleCheckboxes = document.querySelectorAll('.toggle-checkbox');
+
+            toggleCheckboxes.forEach(checkbox => {
+                const label = checkbox.nextElementSibling;
+
+                // Initial styling
+                if (checkbox.checked) {
+                    label.style.backgroundColor = '#3B82F6';
+                }
+
+                // Change on toggle
+                checkbox.addEventListener('change', async function () {
+                    if (this.checked) {
+                        label.style.backgroundColor = '#3B82F6';
+                    } else {
+                        label.style.backgroundColor = '#D1D5DB';
+                    }
+
+                    // Example: persist settings (mock backend API call)
+                    const settingName = this.getAttribute('name') || 'unknown-setting';
+                    const newValue = this.checked;
+
+
+                });
+            });
 
             // Tab Navigation
             const tabButtons = document.querySelectorAll('.tab-button');
@@ -516,38 +456,12 @@
                 });
             });
 
-            // Password Toggle
-            const toggleButtons = document.querySelectorAll('.toggle-password');
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const passwordInput = this.parentElement.querySelector('input');
-                    const icon = this.querySelector('i');
-
-                    if (passwordInput.type === 'password') {
-                        passwordInput.type = 'text';
-                        icon.classList.remove('fa-eye');
-                        icon.classList.add('fa-eye-slash');
-                    } else {
-                        passwordInput.type = 'password';
-                        icon.classList.remove('fa-eye-slash');
-                        icon.classList.add('fa-eye');
-                    }
-                });
-            });
-
             // Form Submissions
             const personalInfoForm = document.getElementById('personalInfoForm');
             personalInfoForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 // In a real application, this would send data to the server
                 alert('Personal information updated successfully!');
-            });
-
-            const changePasswordForm = document.getElementById('changePasswordForm');
-            changePasswordForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-                // In a real application, this would send data to the server
-                alert('Password updated successfully!');
             });
 
             // Logout Functionality
@@ -574,7 +488,7 @@
                 // ✅ 3. Close modal
                 logoutModal.classList.add("hidden");
 
-                // ✅ 4. Redirect to login page
+                // ✅ 4. Redirect to index page
                 window.location.href = "index.html";
             });
 
@@ -585,8 +499,7 @@
                 }
             });
 
-            // Toggle Switch Styling
-            const toggleCheckboxes = document.querySelectorAll('.toggle-checkbox');
+
             toggleCheckboxes.forEach(checkbox => {
                 // Set initial state based on checked attribute
                 if (checkbox.checked) {
@@ -604,10 +517,10 @@
 
             async function loadProfile() {
                 const token = localStorage.getItem("token");
-                if (!token) {
-                    window.location.href = "login.html";
-                    return;
-                }
+                // if (!token) {
+                //     window.location.href = "index.html";
+                //     return;
+                // }
 
                 try {
                     const res = await fetch("https://trust-site-backend.onrender.com/api/profile", {
@@ -643,7 +556,7 @@
                     }
                 } catch (err) {
                     console.error("Profile fetch error:", err);
-                    alert("Error loading profile");
+                    // alert("Error loading profile");
                 }
             }
 
@@ -652,10 +565,10 @@
                 e.preventDefault();
 
                 const token = localStorage.getItem("token");
-                if (!token) {
-                    window.location.href = "login.html";
-                    return;
-                }
+                // if (!token) {
+                //     window.location.href = "index.html";
+                //     return;
+                // }
 
                 const formData = {
                     firstName: e.target[0].value,

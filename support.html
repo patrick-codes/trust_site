@@ -2,42 +2,106 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SmartLuca Trust - Support</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - SmartLuca Trust</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6eef7 100%);
+            min-height: 100vh;
+        }
+
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .chat-message {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100">
-
-    <!-- Header -->
+<body class="text-gray-800">
+    <!-- Header/Navigation -->
     <header class="bg-blue-900 text-white shadow-lg">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <img src="/assets/logo_2.png" alt="" class="w-15 h-12 object-contain rounded-full">
-                <h1 class="text-xl font-bold ml-3">SmartLuca Trust Support</h1>
+                <h1 class="text-xl font-bold ml-3">SmartLuca Trust</h1>
             </div>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="./dashboard.html" data-page="dashboard" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                            class="fas fa-home mr-2"></i>Dashboard</a>
 
+                    <a href="./support.html" data-page="support" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                            class="fas fa-headset mr-2"></i>Support</a>
 
+                    <a href="./profile.html" class="nav-item px-3 py-2 rounded-lg "><i
+                            class="fas fa-user mr-2"></i>Profile</a>
+                </div>
+
+            </div>
+        </div>
     </header>
 
     <!-- Support Page -->
-    <main id="support" class="page container mx-auto px-4 py-8">
+    <main class="container mx-auto px-4 py-8">
         <div class="mb-6">
-            <h2 class="text-2xl font-bold text-gray-800">Support</h2>
+            <h2 class="text-2xl font-bold text-gray-800">Support Center</h2>
             <p class="text-blue-900 font-semibold">We're here to help you 24/7</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
             <div class="bg-white rounded-xl shadow-md p-6">
                 <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-phone-alt text-blue-600 text-xl"></i>
+                    <i class="fas fa-bullhorn text-blue-600 text-xl"></i>
                 </div>
-                <h3 class="text-lg font-semibold mb-2">Call Us</h3>
-                <p class="text-gray-600 mb-4">Speak directly with our client support team</p>
-                <p class="text-2xl font-bold text-blue-600 mb-4">SmartLuca Trust</p>
+                <h3 class="text-lg font-semibold mb-2">Important Notice</h3>
+                <p class="text-gray-600 mb-4">Speak directly with our client support team if you are facing any
+                    challenges</p>
+
                 <p class="text-sm text-gray-500">Available 24/7 for premium clients</p>
+                <button class="w-full mt-4  text-white px-4 py-2 rounded-lg font-semibold btn-hover" id="callSupport">
+
+                </button>
             </div>
 
             <div class="bg-white rounded-xl shadow-md p-6">
@@ -46,7 +110,12 @@
                 </div>
                 <h3 class="text-lg font-semibold mb-2">Live Chat</h3>
                 <p class="text-gray-600 mb-4">Chat with our support team in real-time</p>
-                <button class="bg-green-600 text-white px-4 py-2 rounded-lg font-semibold btn-hover">
+                <div class="flex items-center mb-4">
+                    <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                    <span class="text-green-600 font-medium">Online now</span>
+                </div>
+                <button class="w-full bg-green-600 text-white px-4 py-2 rounded-lg font-semibold btn-hover"
+                    id="startChat">
                     Start Chat
                 </button>
             </div>
@@ -57,54 +126,59 @@
                 </div>
                 <h3 class="text-lg font-semibold mb-2">Email Us</h3>
                 <p class="text-gray-600 mb-4">Send us a message and we'll respond quickly</p>
-                <p class="text-lg font-bold text-purple-600 mb-4">support@SmartLuca Trust.com</p>
+                <p class="text-lg font-bold text-purple-600 mb-4">smartlucatrust@gmail.com</p>
                 <p class="text-sm text-gray-500">Typically respond within 1 hour</p>
+                <button class="w-full mt-4 bg-purple-600 text-white px-4 py-2 rounded-lg font-semibold btn-hover"
+                    id="emailSupport">
+                    <i class="fas fa-envelope mr-2"></i> Send Email
+                </button>
             </div>
         </div>
 
         <div class="bg-white rounded-xl shadow-md p-6 mb-8">
             <h3 class="text-lg font-semibold mb-4">Frequently Asked Questions</h3>
             <div class="space-y-4">
-                <div class="border-b border-gray-200 pb-4">
-                    <button class="flex justify-between items-center w-full text-left font-medium">
+                <div class="faq-item border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-medium">
                         <span>How do I update my personal information?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
-                    <div class="mt-2 text-gray-600">
+                    <div class="faq-answer mt-2 text-gray-600">
                         You can update your personal information by visiting the Profile section in your account. For
                         security reasons, some changes may require additional verification.
                     </div>
                 </div>
 
-                <div class="border-b border-gray-200 pb-4">
-                    <button class="flex justify-between items-center w-full text-left font-medium">
+                <div class="faq-item border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-medium">
                         <span>What is the process for international wire transfers?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
-                    <div class="mt-2 text-gray-600">
+                    <div class="faq-answer mt-2 text-gray-600">
                         International wire transfers can be initiated through the Transfer section of your account.
                         You'll need the recipient's bank details including SWIFT/BIC code. Transfers typically take 1-2
                         business days.
                     </div>
                 </div>
 
-                <div class="border-b border-gray-200 pb-4">
-                    <button class="flex justify-between items-center w-full text-left font-medium">
+                <div class="faq-item border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-medium">
                         <span>How do I report a lost or stolen card?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
-                    <div class="mt-2 text-gray-600">
-                        Immediately call our 24/7 support line at SmartLuca Trust to report a lost or stolen card. We
+                    <div class="faq-answer mt-2 text-gray-600">
+                        Immediately contact our 24/7 support email at smartlucatrust@gmail.com to report a lost or
+                        stolen card. We
                         will cancel the card and expedite a replacement to you.
                     </div>
                 </div>
 
-                <div class="border-b border-gray-200 pb-4">
-                    <button class="flex justify-between items-center w-full text-left font-medium">
+                <div class="faq-item border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-medium">
                         <span>What investment options are available for premium clients?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
-                    <div class="mt-2 text-gray-600">
+                    <div class="faq-answer mt-2 text-gray-600">
                         Premium clients have access to exclusive investment opportunities including private equity,
                         hedge funds, real estate investments, and personalized portfolio management services.
                     </div>
@@ -112,56 +186,281 @@
             </div>
         </div>
 
-        <!-- Footer -->
-        <footer class="bg-blue-900 text-white mt-16 py-8">
-            <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">SmartLuca Trust</h3>
-                        <p class="text-sm text-blue-200">Providing premium wealth management and trust services since
-                            1987.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Schedule an Appointment</h3>
+            <p class="text-gray-600 mb-4">Meet with one of our financial advisors in person or virtually</p>
 
-                        <p class="text-sm text-blue-200 mt-2"><i class="fas fa-envelope mr-2"></i> support@SmartLuca
-                            Trust.com
-                        </p>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-sm text-blue-200 hover:text-white">Privacy Policy</a></li>
-                            <li><a href="#" class="text-sm text-blue-200 hover:text-white">Terms of Service</a></li>
-                            <li><a href="#" class="text-sm text-blue-200 hover:text-white">Security</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Preferred Date</label>
+                    <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-md" id="appointmentDate">
                 </div>
-                <div class="border-t border-blue-800 mt-8 pt-6 text-sm text-blue-300 text-center">
-                    <p>© 2025 SmartLuca Trust. All rights reserved.</p>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Preferred Time</label>
+                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md" id="appointmentTime">
+                        <option>9:00 AM</option>
+                        <option>10:00 AM</option>
+                        <option>11:00 AM</option>
+                        <option>1:00 PM</option>
+                        <option>2:00 PM</option>
+                        <option>3:00 PM</option>
+                        <option>4:00 PM</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Meeting Type</label>
+                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md" id="meetingType">
+                        <option>Video Conference</option>
+                        <option>Phone Call</option>
+                        <option>In-Person (New York)</option>
+                        <option>In-Person (London)</option>
+                        <option>In-Person (Hong Kong)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Topic</label>
+                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md" id="meetingTopic">
+                        <option>Investment Strategy</option>
+                        <option>Estate Planning</option>
+                        <option>Tax Optimization</option>
+                        <option>Retirement Planning</option>
+                        <option>Wealth Transfer</option>
+                        <option>Other</option>
+                    </select>
                 </div>
             </div>
-        </footer>
+
+            <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Additional Notes</label>
+                <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md" rows="3"
+                    placeholder="Any specific topics you'd like to discuss" id="meetingNotes"></textarea>
+            </div>
+
+            <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold btn-hover"
+                id="scheduleMeeting">
+                Schedule Meeting
+            </button>
+        </div>
     </main>
 
+    <!-- Chat Modal -->
+    <div id="chatModal"
+        class="fixed bottom-5 right-5 w-80 max-w-full sm:w-80 bg-white rounded-xl shadow-lg z-50 hidden">
+        <div class="bg-blue-600 text-white p-4 rounded-t-xl flex justify-between items-center">
+            <h3 class="font-semibold text-sm sm:text-base">Live Chat Support</h3>
+            <button id="closeChat" class="text-white">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-4 h-64 overflow-y-auto" id="chatMessages">
+            <div class="chat-message bg-blue-100 rounded-lg p-3 mb-3">
+                <p class="text-sm">Hello! Thank you for contacting SmartLuca Trust support. How can I help you today?
+                </p>
+                <span class="text-xs text-gray-500">Support Agent • Just now</span>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-200">
+            <div class="flex items-center">
+                <input type="text"
+                    class="flex-grow min-w-0 px-3 py-2 border border-gray-300 rounded-l-lg text-sm sm:text-base"
+                    placeholder="Type your message..." id="chatInput">
+                <button class="bg-blue-600 text-white px-4 py-2 shrink-0 rounded-r-lg" id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white mt-16 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">SmartLuca Trust</h3>
+                    <p class="text-sm text-blue-200">Providing premium wealth management and trust services since 1987.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+
+                    <p class="text-sm text-blue-200 mt-2"><i class="fas fa-envelope mr-2"></i> info@smartlucatrust.com
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./privacy/privacy.html" class="text-sm text-blue-200 hover:text-white">Terms of
+                                Service & Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-6 text-sm text-blue-300 text-center">
+                <p>© 2025 SmartLuca Trust. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg md:hidden flex justify-around items-center py-3 z-10">
+        <a href="./dashboard.html" data-page="dashboard" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-home"></i>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+
+        <a href="./support.html" data-page="support" class="page-link flex flex-col items-center text-blue-600">
+            <i class="fas fa-headset"></i>
+            <span class="text-xs mt-1">Support</span>
+        </a>
+        <a href="./profile.html" data-page="profile" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-user"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // FAQ Accordion Functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', function () {
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Support Contact Buttons
+            const callSupport = document.getElementById('callSupport');
+            const emailSupport = document.getElementById('emailSupport');
+
+
+
+            emailSupport.addEventListener('click', function () {
+                window.location.href = 'mailto:smartlucatrust@gmail.com';
+            });
+
+            // Live Chat Functionality
+            const startChat = document.getElementById('startChat');
+            const chatModal = document.getElementById('chatModal');
+            const closeChat = document.getElementById('closeChat');
+            const chatInput = document.getElementById('chatInput');
+            const sendMessage = document.getElementById('sendMessage');
+            const chatMessages = document.getElementById('chatMessages');
+
+            startChat.addEventListener('click', function () {
+                chatModal.classList.remove('hidden');
+            });
+
+            closeChat.addEventListener('click', function () {
+                chatModal.classList.add('hidden');
+            });
+
+            sendMessage.addEventListener('click', function () {
+                const message = chatInput.value.trim();
+                if (message) {
+                    // Add user message
+                    const userMessage = document.createElement('div');
+                    userMessage.className = 'chat-message bg-gray-100 rounded-lg p-3 mb-3 ml-8';
+                    userMessage.innerHTML = `
+                        <p class="text-sm">${message}</p>
+                        <span class="text-xs text-gray-500">You • Just now</span>
+                    `;
+                    chatMessages.appendChild(userMessage);
+
+                    // Clear input
+                    chatInput.value = '';
+
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                    // Simulate agent response after a delay
+                    setTimeout(() => {
+                        const agentMessage = document.createElement('div');
+                        agentMessage.className = 'chat-message bg-blue-100 rounded-lg p-3 mb-3';
+                        agentMessage.innerHTML = `
+                            <p class="text-sm">Thank you for your message. I'll look into this for you right away.</p>
+                            <span class="text-xs text-gray-500">Support Agent • Just now</span>
+                        `;
+                        chatMessages.appendChild(agentMessage);
+
+                        // Scroll to bottom
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 1000);
+                }
+            });
+
+            // Send message on Enter key
+            chatInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    sendMessage.click();
+                }
+            });
+
+            // Schedule Meeting Functionality
+            const scheduleMeeting = document.getElementById('scheduleMeeting');
+
+            scheduleMeeting.addEventListener('click', function () {
+                const date = document.getElementById('appointmentDate').value;
+                const time = document.getElementById('appointmentTime').value;
+                const type = document.getElementById('meetingType').value;
+                const topic = document.getElementById('meetingTopic').value;
+                const notes = document.getElementById('meetingNotes').value;
+
+                if (!date) {
+                    alert('Please select a date for your appointment');
+                    return;
+                }
+
+                alert(`Appointment scheduled for ${date} at ${time} (${type}) regarding ${topic}. We'll contact you to confirm.`);
+
+                // Reset form
+                document.getElementById('appointmentDate').value = '';
+                document.getElementById('appointmentTime').value = '9:00 AM';
+                document.getElementById('meetingType').value = 'Video Conference';
+                document.getElementById('meetingTopic').value = 'Investment Strategy';
+                document.getElementById('meetingNotes').value = '';
+            });
+
+            // Button Interactivity
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    this.classList.add('transform', 'scale-95');
+                    setTimeout(() => {
+                        this.classList.remove('transform', 'scale-95');
+                    }, 100);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

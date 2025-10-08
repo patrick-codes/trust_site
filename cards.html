@@ -2,39 +2,493 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SmartLuca Trust - Cards</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLuca Trust - Virtual Cards</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6eef7 100%);
+            min-height: 100vh;
+        }
+
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .virtual-card {
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+            height: 240px;
+            /* Fixed height for consistency */
+            perspective: 1000px;
+        }
+
+        .virtual-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        .status-badge {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .status-badge:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .status-active:before {
+            background-color: #10B981;
+        }
+
+        .card-number {
+            letter-spacing: 3px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+
+        .card-chip {
+            width: 40px;
+            height: 30px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-chip:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.3) 50%, transparent 55%);
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100">
+<body class="text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/assets/logo_2.png" alt="" class="w-15 h-12 object-contain rounded-full">
+                <h2 class="text-xl  ml-3">SmartLuca Trust</h1>
+            </div>
 
-    <!-- Header -->
-    <header class="bg-white shadow p-4 flex items-center justify-between">
-        <div class="flex items-center">
-            <img src="/assets/logo_2.png" alt="Logo" class="w-10 h-10 object-contain rounded-full">
-            <h1 class="text-xl font-bold ml-3">SmartLuca Trust</h1>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="./dashboard.html" data-page="dashboard" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                            class="fas fa-home mr-2"></i>Dashboard</a>
+                    <a href="./support.html" data-page="support" class="nav-item px-3 py-2 rounded-lg page-link"><i
+                            class="fas fa-headset mr-2"></i>Support</a>
+                    <a href="./profile.html" class="nav-item px-3 py-2 rounded-lg"><i
+                            class="fas fa-user mr-2"></i>Profile</a>
+                </div>
+
+            </div>
         </div>
-        <nav class="space-x-6">
-            <a href="transactions.html" class="font-medium text-gray-600 hover:text-blue-600">Transactions</a>
-            <a href="cards.html" class="font-medium text-blue-600">Cards</a>
-            <a href="invest.html" class="font-medium text-gray-600 hover:text-blue-600">Invest</a>
-            <a href="support.html" class="font-medium text-gray-600 hover:text-blue-600">Support</a>
-        </nav>
     </header>
 
-    <!-- Content -->
-    <main class="p-6">
-        <h2 class="text-2xl font-semibold mb-4">💳 Cards</h2>
-        <p class="text-gray-600">Manage your debit, credit, and virtual cards here.</p>
-        <!-- Placeholder -->
-        <div class="mt-6 bg-white p-4 rounded-lg shadow">
-            <p class="text-gray-500">No cards available yet.</p>
+    <!-- Virtual Cards Page -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Virtual Cards</h2>
+            <p class="text-blue-900 font-semibold text-lg">Manage your digital payment cards</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Virtual Card 1 -->
+            <div class="flex justify-center">
+                <div
+                    class="virtual-card bg-gradient-to-br from-purple-700 via-purple-600 to-indigo-800 rounded-2xl shadow-2xl w-full max-w-md">
+                    <div class="card-front text-white">
+                        <!-- Card Header -->
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="card-chip"></div>
+                                <div>
+                                    <h3 class="text-sm font-medium opacity-90">Virtual Card</h3>
+                                    <div class="flex items-center mt-1">
+                                        <div class="bg-white text-purple-700 p-1 rounded mr-2">
+                                            <i class="fab fa-cc-mastercard text-lg"></i>
+                                        </div>
+                                        <h2 class="text-lg font-bold">Mastercard</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white text-purple-700 px-3 py-1 rounded-full text-xs font-semibold">
+                                Active
+                            </div>
+                        </div>
+
+                        <!-- Card Number -->
+                        <div class="text-center my-6">
+                            <h1 class="card-number tracking-widest">•••• •••• •••• 2281</h1>
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="flex justify-between items-end mt-auto">
+                            <div>
+                                <p class="text-xs opacity-80 mb-1">Cardholder</p>
+                                <p class="font-medium text-sm">James Michael Maddox</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs opacity-80 mb-1">Expires</p>
+                                <p class="font-medium text-sm">09/24</p>
+                            </div>
+                        </div>
+
+                        <!-- Flip Indicator -->
+                        <div class="absolute bottom-4 right-4 text-xs opacity-70 flex items-center">
+                            <i class="fas fa-sync-alt mr-1"></i> Flip
+                        </div>
+                    </div>
+
+                    <!-- Card Back -->
+                    <div class="card-back bg-gradient-to-br from-indigo-800 via-purple-700 to-purple-600 text-white">
+                        <!-- Magnetic Strip -->
+                        <div class="h-8 bg-black mb-6 rounded-lg"></div>
+
+                        <!-- Signature Strip -->
+                        <div class="bg-gray-300 h-8 rounded-lg mb-4 flex items-center justify-end px-4">
+                            <div class="w-full h-4 bg-gray-400 rounded"></div>
+                        </div>
+
+                        <!-- CVV Strip -->
+                        <div class="bg-white h-8 rounded-lg flex items-center justify-end px-4 mb-6">
+                            <span class="text-gray-700 font-mono text-sm font-bold">CVV 228</span>
+                        </div>
+
+                        <!-- Customer Service -->
+                        <div class="text-center">
+                            <p class="text-xs opacity-80 mb-1">For customer service send us a mail</p>
+                            <p class="font-medium text-sm">smartlucatrust@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Virtual Card 2 -->
+            <div class="flex justify-center">
+                <div
+                    class="virtual-card bg-gradient-to-br from-teal-700 via-cyan-600 to-blue-800 rounded-2xl shadow-2xl w-full max-w-md">
+                    <div class="card-front text-white">
+                        <!-- Card Header -->
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="card-chip"></div>
+                                <div>
+                                    <h3 class="text-sm font-medium opacity-90">Virtual Card</h3>
+                                    <div class="flex items-center mt-1">
+                                        <div class="bg-white text-teal-700 p-1 rounded mr-2">
+                                            <i class="fab fa-cc-visa text-lg"></i>
+                                        </div>
+                                        <h2 class="text-lg font-bold">VISA</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white text-teal-700 px-3 py-1 rounded-full text-xs font-semibold">
+                                Active
+                            </div>
+                        </div>
+
+                        <!-- Card Number -->
+                        <div class="text-center my-6">
+                            <h1 class="card-number tracking-widest">•••• •••• •••• 4492</h1>
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="flex justify-between items-end mt-auto">
+                            <div>
+                                <p class="text-xs opacity-80 mb-1">Cardholder</p>
+                                <p class="font-medium text-sm">James Michael Maddox</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs opacity-80 mb-1">Spending Limit</p>
+                                <p class="font-medium text-sm">$25,000.00</p>
+                            </div>
+                        </div>
+
+                        <!-- Flip Indicator -->
+                        <div class="absolute bottom-4 right-4 text-xs opacity-70 flex items-center">
+                            <i class="fas fa-sync-alt mr-1"></i> Flip
+                        </div>
+                    </div>
+
+                    <!-- Card Back -->
+                    <div class="card-back bg-gradient-to-br from-blue-800 via-cyan-700 to-teal-600 text-white">
+                        <!-- Magnetic Strip -->
+                        <div class="h-8 bg-black mb-6 rounded-lg"></div>
+
+                        <!-- Signature Strip -->
+                        <div class="bg-gray-300 h-8 rounded-lg mb-4 flex items-center justify-end px-4">
+                            <div class="w-full h-4 bg-gray-400 rounded"></div>
+                        </div>
+
+                        <!-- CVV Strip -->
+                        <div class="bg-white h-8 rounded-lg flex items-center justify-end px-4 mb-6">
+                            <span class="text-gray-700 font-mono text-sm font-bold">CVV 449</span>
+                        </div>
+
+                        <!-- Customer Service -->
+                        <div class="text-center">
+                            <p class="text-xs opacity-80 mb-1">For customer service send us a mail</p>
+                            <p class="font-medium text-sm">smartlucatrust@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Controls Section -->
+        <div class="bg-white rounded-2xl shadow-md p-8 mb-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Card Management</h3>
+                    <p class="text-gray-600">Create and manage your virtual cards</p>
+                </div>
+                <button
+                    class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold btn-hover mt-4 md:mt-0 flex items-center">
+                    <i class="fas fa-plus mr-2"></i> Create New Card
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="border border-gray-200 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lock text-blue-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-lg mb-2">Freeze Card</h4>
+                    <p class="text-gray-600 text-sm mb-4">Temporarily disable your card</p>
+                    <button class="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg font-medium btn-hover w-full">
+                        Manage
+                    </button>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-sliders-h text-green-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-lg mb-2">Spending Limits</h4>
+                    <p class="text-gray-600 text-sm mb-4">Set custom spending limits</p>
+                    <button class="bg-green-100 text-green-600 px-4 py-2 rounded-lg font-medium btn-hover w-full">
+                        Configure
+                    </button>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bell text-purple-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-lg mb-2">Notifications</h4>
+                    <p class="text-gray-600 text-sm mb-4">Manage transaction alerts</p>
+                    <button class="bg-purple-100 text-purple-600 px-4 py-2 rounded-lg font-medium btn-hover w-full">
+                        Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="bg-white rounded-2xl shadow-md p-8">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">Recent Transactions</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full min-w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="py-4 px-6 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                Merchant</th>
+                            <th class="py-4 px-6 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                Date</th>
+                            <th class="py-4 px-6 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                Amount</th>
+                            <th class="py-4 px-6 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                Card</th>
+                            <th class="py-4 px-6 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="py-4 px-6">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                                        <i class="fab fa-amazon text-blue-600 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Amazon Web Services</p>
+                                        <p class="text-sm text-gray-500">Cloud Services</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 font-medium">Aug 18, 2023</td>
+                            <td class="py-4 px-6">
+                                <p class="text-red-600 font-semibold">-$1,250.00</p>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span
+                                    class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">MC
+                                    •••• 2281</span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="status-badge status-active font-medium">Completed</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="py-4 px-6">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                                        <i class="fab fa-spotify text-green-600 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Spotify Premium</p>
+                                        <p class="text-sm text-gray-500">Subscription</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 font-medium">Aug 15, 2023</td>
+                            <td class="py-4 px-6">
+                                <p class="text-red-600 font-semibold">-$15.99</p>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-xs font-medium">VISA
+                                    •••• 4492</span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="status-badge status-active font-medium">Completed</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
 
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white mt-16 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">SmartLuca Trust</h3>
+                    <p class="text-sm text-blue-200">Providing premium wealth management and trust services since 1987.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+
+                    <p class="text-sm text-blue-200 mt-2"><i class="fas fa-envelope mr-2"></i> info@smartlucatrust.com
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./privacy/privacy.html" class="text-sm text-blue-200 hover:text-white">Terms of
+                                Service & Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-6 text-sm text-blue-300 text-center">
+                <p>© 2025 SmartLuca Trust. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg md:hidden flex justify-around items-center py-3 z-10">
+        <a href="#" data-page="dashboard" class="page-link flex flex-col items-center text-blue-600">
+            <i class="fas fa-home"></i>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+
+        <a href="./support.html" data-page="support" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-headset"></i>
+            <span class="text-xs mt-1">Support</span>
+        </a>
+        <a href="./profile.html" data-page="profile" class="page-link flex flex-col items-center text-gray-500">
+            <i class="fas fa-user"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Virtual Card Flip Functionality
+            const virtualCards = document.querySelectorAll('.virtual-card');
+            virtualCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    this.classList.toggle('flipped');
+                });
+            });
+
+            // Button Interactivity
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    this.classList.add('transform', 'scale-95');
+                    setTimeout(() => {
+                        this.classList.remove('transform', 'scale-95');
+                    }, 100);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
